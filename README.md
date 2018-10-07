@@ -1,4 +1,6 @@
 
+[![Travis build status](https://travis-ci.com/martakarass/runstats.svg?branch=master)](https://travis-ci.com/martakarass/runstats)
+
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 runstats
 ========
