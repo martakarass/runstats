@@ -11,7 +11,7 @@ os:
 
 r:
   - release
-  - devel
+#  - devel
 
 r_packages:
   - covr
