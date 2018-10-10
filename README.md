@@ -49,11 +49,11 @@ To better explain the concept of running statistics, package's function `runstat
 runstats.demo("RunningCor")
 ```
 
-![](https://i.imgur.com/SrgUEdX.gif)
+![](https://i.imgur.com/DgIW77a.gif)
 
 ``` r
 ## Example: demo for running mean method 
 runstats.demo("RunningMean")
 ```
 
-![](https://i.imgur.com/gyaTrRz.gif)
+![](https://i.imgur.com/VabjavU.gif)
