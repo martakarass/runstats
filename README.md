@@ -12,7 +12,7 @@ Package `runstats` provides methods for fast computation of running sample stati
 3.  variance,
 4.  covariance,
 5.  correlation,
-6.  Euclidean distance.
+6.  euclidean distance.
 
 ### Installation
 
@@ -40,7 +40,7 @@ out2 <- RunningMean(x, W = 100, circular = TRUE)
 
 ### Running statistics
 
-To better explain the concept of running statistics, package's function `runstats.demo(func.name)` allows to vizualize how the output of each running statistics method is generated. To run the demo, use `func.name` being one of the methods' names:
+To better explain the details of running statistics, package's function `runstats.demo(func.name)` allows to vizualize how the output of each running statistics method is generated. To run the demo, use `func.name` being one of the methods' names:
 
 1.  `"RunningMean"`,
 2.  `"RunningSd"`,
@@ -58,14 +58,14 @@ runstats.demo("RunningCor")
 
 ``` r
 ## Example: demo for running mean method 
-runstats.demo("RunningMean")
+runstats.demo("RunningMean") ## Zmien 'RunningPattern' na 'Pattern' w demach
 ```
 
 ![](https://i.imgur.com/VabjavU.gif)
 
 ### Performance
 
-To give a sense of `runstats` package's methods performance, we use `rbenchmark` to measure elapsed time of `RunningCov` method execution, for different lengths of `x` time-series and fixed length of the short time-series `y`.
+We use `rbenchmark` to measure elapsed time of `RunningCov` execution, for different lengths of time-series`x` and fixed length of the shorter pattern `y`.
 
 ``` r
 library(rbenchmark)
@@ -96,16 +96,17 @@ out.df
 #> 4 runstats           10   6.304        1     5.917    0.359  1000000
 #> 5 runstats           10 126.605        1   120.697    5.616 10000000
 ```
+# Ta tabelka jest nieczytelna - zastapmy to obrazkiem
 
 ##### Compare with a conventional method
 
-To give a sense how the method compares with "conventional" way of computing running covariance in `R`, we use `rbenchmark` package to measure elapsed time of `RunningCov` and `RunningCov.conv` execution, for different lengths of `x` time-series and fixed length of the short time-series `y`.
+To compare RunStats performance with "conventional" loop-based way of computing running covariance in `R`, we use `rbenchmark` package to measure elapsed time of `RunStats::RunningCov` and running covariance implemented with `sapply` loop, for different lengths of time-series `x` and fixed length of the shorter time-series `y`.
 
-As conventional approach takes more time, we limit ourselves to short grid of lengths of `x` time-series considered.
+
 
 ``` r
 ## Conventional approach 
-RunningCov.conv <- function(x, y){
+RunningCov.conv <- function(x, y){ # Zmien nazwe tej funkcji bo 'conv' sugeruje convolution. Np. na RunningCov.sapply
   l_x <- length(x)
   l_y <- length(y)
   sapply(1:(l_x - l_y + 1), function(i){
