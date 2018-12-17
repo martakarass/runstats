@@ -18,5 +18,7 @@ Suggests:
     testthat,
     ggplot2,
     knitr,
-    rmarkdown
+    rmarkdown,
+    sessioninfo,
+    rbenchmark
 VignetteBuilder: knitr

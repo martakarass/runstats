@@ -15,7 +15,8 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
   fig.path = "man/figures/README-",
-  out.width = "100%"
+  out.width = "100%",
+  cache = FALSE
 )
 ```
 
@@ -91,7 +92,7 @@ library(rbenchmark)
 library(ggplot2)
 ```
 
-```{r, cache = TRUE, eval = FALSE}
+```{r, eval = FALSE}
 library(rbenchmark)
 
 set.seed (20181010)
@@ -107,20 +108,34 @@ for (x.tmp in x.list){
                           columns = c("test", "replications", "elapsed",
                                       "relative", "user.self", "sys.self"))
   out.df.tmp$x_length <- length(x.tmp)
+  out.df.tmp$pattern_length <- length(y)
   out.df <- rbind(out.df, out.df.tmp)
 }
 
 ```
 
-```{r, eval = FALSE}
-out.df
+
+```{r, echo = FALSE, eval = FALSE}
+out.df.path <- "/Users/mkaras/Dropbox/_PROJECTS/R/runstats/static/performance_rbenchmark_out1.csv"
+write.csv(out.df, out.df.path, row.names = FALSE, quote = FALSE)
+```
+
+```{r, echo = FALSE, eval = TRUE}
+out.df.path <- "/Users/mkaras/Dropbox/_PROJECTS/R/runstats/static/performance_rbenchmark_out1.csv"
+out.df <- read.csv(out.df.path)
+options("scipen" = 10, "digits" = 4)
+```
+
+
+```{r}
+knitr::kable(out.df)
 ```
 
 ##### Compare with a conventional method 
 
 To compare `RunStats` performance with "conventional" loop-based way of computing running covariance in `R`, we use `rbenchmark` package to measure elapsed time of `RunStats::RunningCov` and running covariance implemented with `sapply` loop, for different lengths of time-series `x` and fixed length of the shorter time-series `y`.
 
-```{r, cache = TRUE, eval = FALSE}
+```{r, eval = FALSE}
 ## Conventional approach 
 RunningCov.sapply <- function(x, y){
   l_x <- length(x)
@@ -143,18 +158,27 @@ for (x.tmp in x.list[c(1,2,3,4)]){
   out.df2 <- rbind(out.df2, out.df.tmp)
 }
 
+```
 
+```{r, echo = FALSE, eval = FALSE}
+out.df.path <- "/Users/mkaras/Dropbox/_PROJECTS/R/runstats/static/performance_rbenchmark_out2.csv"
+write.csv(out.df2, out.df.path, row.names = FALSE, quote = FALSE)
+```
+
+```{r, echo = FALSE, eval = TRUE}
+out.df.path <- "/Users/mkaras/Dropbox/_PROJECTS/R/runstats/static/performance_rbenchmark_out2.csv"
+out.df2 <- read.csv(out.df.path)
 ```
 
 Benchmark results
 
-```{r, fig.width=10, fig.height=4, eval = FALSE}
+```{r, fig.width=10, fig.height=4}
 library(ggplot2)
 ggplot(out.df2, aes(x = x_length, y = elapsed, color = test)) + 
   geom_line() +  geom_point(size = 3) +  scale_x_log10() + 
-  theme_gray(base_size = 12) + 
+  theme_minimal(base_size = 14) + 
   labs(x = "Vector length of x",
-       y = "elapsed", color = "Method", 
+       y = "elapsed [sec]", color = "Method", 
        title = "Running covariance: rbenchmark elapsed time comparison")
 ```
 

@@ -83,13 +83,22 @@ for (x.tmp in x.list){
                           columns = c("test", "replications", "elapsed",
                                       "relative", "user.self", "sys.self"))
   out.df.tmp$x_length <- length(x.tmp)
+  out.df.tmp$pattern_length <- length(y)
   out.df <- rbind(out.df, out.df.tmp)
 }
 ```
 
 ``` r
-out.df
+knitr::kable(out.df)
 ```
+
+| test     |  replications|  elapsed|  relative|  user.self|  sys.self|  x\_length|  pattern\_length|
+|:---------|-------------:|--------:|---------:|----------:|---------:|----------:|----------------:|
+| runstats |            10|    0.003|         1|      0.003|     0.000|       1000|              100|
+| runstats |            10|    0.026|         1|      0.022|     0.005|      10000|              100|
+| runstats |            10|    0.372|         1|      0.320|     0.050|     100000|              100|
+| runstats |            10|    5.768|         1|      5.529|     0.223|    1000000|              100|
+| runstats |            10|  124.837|         1|    119.587|     4.927|   10000000|              100|
 
 ##### Compare with a conventional method
 
@@ -125,11 +134,13 @@ Benchmark results
 library(ggplot2)
 ggplot(out.df2, aes(x = x_length, y = elapsed, color = test)) + 
   geom_line() +  geom_point(size = 3) +  scale_x_log10() + 
-  theme_gray(base_size = 12) + 
+  theme_minimal(base_size = 14) + 
   labs(x = "Vector length of x",
-       y = "elapsed", color = "Method", 
+       y = "elapsed [sec]", color = "Method", 
        title = "Running covariance: rbenchmark elapsed time comparison")
 ```
+
+<img src="man/figures/README-unnamed-chunk-13-1.png" width="100%" />
 
 Platform information
 
@@ -144,5 +155,5 @@ sessioninfo::platform_info()
 #>  collate  en_US.UTF-8                 
 #>  ctype    en_US.UTF-8                 
 #>  tz       America/New_York            
-#>  date     2018-12-16
+#>  date     2018-12-17
 ```

@@ -344,12 +344,12 @@ plot.with.pattern <- function(func, plt.title.vec){
 #'
 #' @param func.name Character value; one of the following:
 #' \itemize{
-#'   \item "mean",
-#'   \item "sd",
-#'   \item "var",
-#'   \item "cov",
-#'   \item "cor",
-#'   \item "l2norm".
+#'   \item "RunningMean",
+#'   \item "RunningSd",
+#'   \item "RunningVar",
+#'   \item "RunningCov",
+#'   \item "RunningCor",
+#'   \item "RunningL2Norm".
 #' }
 #'
 #' @return \code{NULL}
@@ -358,55 +358,53 @@ plot.with.pattern <- function(func, plt.title.vec){
 #'
 #' @examples
 #' \dontrun{
-#' runstats.demo(func.name = "cor")
-#' runstats.demo(func.name = "cov")
-#' runstats.demo(func.name = "l2norm")
-#' runstats.demo(func.name = "mean")
-#' runstats.demo(func.name = "sd")
-#' runstats.demo(func.name = "var")
+#' runstats.demo(func.name = "RunningMean")
+#' runstats.demo(func.name = "RunningSd")
+#' runstats.demo(func.name = "RunningVar")
+#' runstats.demo(func.name = "RunningCov")
+#' runstats.demo(func.name = "RunningCor")
+#' runstats.demo(func.name = "RunningL2Norm")
 #' }
 #'
-runstats.demo <- function(func.name = "Cov"){
-
-  func.name <- tolower(func.name)
+runstats.demo <- function(func.name = "RunningCov"){
 
   ## Match function name in argument with the package function
   func <- switch(func.name,
-                 "mean"   = RunningMean,
-                 "sd"     = RunningSd,
-                 "var"    = RunningVar,
-                 "cov"    = RunningCov,
-                 "cor"    = RunningCor,
-                 "l2norm" = RunningL2Norm)
+                 "RunningMean"   = RunningMean,
+                 "RunningSd"     = RunningSd,
+                 "RunningVar"    = RunningVar,
+                 "RunningCov"    = RunningCov,
+                 "RunningCor"    = RunningCor,
+                 "RunningL2Norm" = RunningL2Norm)
   if (is.null(func)) stop("Undefined func.name argument value.")
 
   ## Match function name in argument with the plot title
   plt.title.vec <-  switch(func.name,
-                           "mean"   =  c("black: x\nred: W-width running window",
-                                         "RunningMean(x, W)",
-                                         "RunningMean(x, W, circular = TRUE)"),
+                           "RunningMean"   =  c("black: x\nred: W-width running window",
+                                               "RunningMean(x, W)",
+                                               "RunningMean(x, W, circular = TRUE)"),
 
-                           "sd"     =  c("black: x\nred: W-width running window",
-                                         "RunningSd(x, W)",
-                                         "RunningSd(x, W, circular = TRUE)"),
+                           "RunningSd"     =  c("black: x\nred: W-width running window",
+                                               "RunningSd(x, W)",
+                                               "RunningSd(x, W, circular = TRUE)"),
 
-                           "var"    =  c("black: x\nred: W-width running window",
-                                         "RunningVar(x, W)",
-                                         "RunningVar(x, W, circular = TRUE)"),
+                           "RunningVar"    =  c("black: x\nred: W-width running window",
+                                               "RunningVar(x, W)",
+                                               "RunningVar(x, W, circular = TRUE)"),
 
-                           "cov"    =  c("black: x\nred: running pattern",
-                                         "RunningCov(x, pattern)",
-                                         "RunningCov(x, pattern, circular = TRUE)"),
+                           "RunningCov"    =  c("black: x\nred: running pattern",
+                                               "RunningCov(x, pattern)",
+                                               "RunningCov(x, pattern, circular = TRUE)"),
 
-                           "cor"    =  c("black: x\nred: running pattern",
-                                         "RunningCor(x, pattern)",
-                                         "RunningCor(x, pattern, circular = TRUE)"),
+                           "RunningCor"    =  c("black: x\nred: running pattern",
+                                               "RunningCor(x, pattern)",
+                                               "RunningCor(x, pattern, circular = TRUE)"),
 
-                           "l2norm" =  c("black: x\nred: running pattern",
-                                         "RunningL2Norm(x, pattern)",
-                                         "RunningL2Norm(x, pattern, circular = TRUE)"))
+                           "RunningL2Norm" =  c("black: x\nred: running pattern",
+                                               "RunningL2Norm(x, pattern)",
+                                               "RunningL2Norm(x, pattern, circular = TRUE)"))
 
-  if (func.name %in% c("cov", "cor", "l2norm")){
+  if (func.name %in% c("RunningCov", "RunningCor", "RunningL2Norm")){
     plot.with.pattern(func, plt.title.vec)
   } else {
     plot.no.pattern(func, plt.title.vec)
