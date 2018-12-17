@@ -58,14 +58,14 @@ runstats.demo("RunningCor")
 
 ``` r
 ## Example: demo for running mean method 
-runstats.demo("RunningMean") ## Zmien 'RunningPattern' na 'Pattern' w demach
+runstats.demo("RunningMean")
 ```
 
 ![](https://i.imgur.com/VabjavU.gif)
 
 ### Performance
 
-We use `rbenchmark` to measure elapsed time of `RunningCov` execution, for different lengths of time-series`x` and fixed length of the shorter pattern `y`.
+We use `rbenchmark` to measure elapsed time of `RunningCov` execution, for different lengths of time-series `x` and fixed length of the shorter pattern `y`.
 
 ``` r
 library(rbenchmark)
@@ -89,24 +89,15 @@ for (x.tmp in x.list){
 
 ``` r
 out.df
-#>       test replications elapsed relative user.self sys.self x_length
-#> 1 runstats           10   0.003        1     0.002    0.000     1000
-#> 2 runstats           10   0.029        1     0.024    0.006    10000
-#> 3 runstats           10   0.387        1     0.328    0.058   100000
-#> 4 runstats           10   6.304        1     5.917    0.359  1000000
-#> 5 runstats           10 126.605        1   120.697    5.616 10000000
 ```
-# Ta tabelka jest nieczytelna - zastapmy to obrazkiem
 
 ##### Compare with a conventional method
 
-To compare RunStats performance with "conventional" loop-based way of computing running covariance in `R`, we use `rbenchmark` package to measure elapsed time of `RunStats::RunningCov` and running covariance implemented with `sapply` loop, for different lengths of time-series `x` and fixed length of the shorter time-series `y`.
-
-
+To compare `RunStats` performance with "conventional" loop-based way of computing running covariance in `R`, we use `rbenchmark` package to measure elapsed time of `RunStats::RunningCov` and running covariance implemented with `sapply` loop, for different lengths of time-series `x` and fixed length of the shorter time-series `y`.
 
 ``` r
 ## Conventional approach 
-RunningCov.conv <- function(x, y){ # Zmien nazwe tej funkcji bo 'conv' sugeruje convolution. Np. na RunningCov.sapply
+RunningCov.sapply <- function(x, y){
   l_x <- length(x)
   l_y <- length(y)
   sapply(1:(l_x - l_y + 1), function(i){
@@ -118,7 +109,7 @@ set.seed (20181010)
 
 out.df2 <- data.frame()
 for (x.tmp in x.list[c(1,2,3,4)]){
-  out.df.tmp <- benchmark("conventional" = RunningCov.conv(x.tmp, y),
+  out.df.tmp <- benchmark("conventional" = RunningCov.sapply(x.tmp, y),
                           "runstats" = runstats::RunningCov(x.tmp, y),
                           replications = 10,
                           columns = c("test", "replications", "elapsed",
@@ -140,20 +131,18 @@ ggplot(out.df2, aes(x = x_length, y = elapsed, color = test)) +
        title = "Running covariance: rbenchmark elapsed time comparison")
 ```
 
-<img src="man/figures/README-unnamed-chunk-9-1.png" width="100%" />
-
 Platform information
 
 ``` r
 sessioninfo::platform_info()
 #>  setting  value                       
 #>  version  R version 3.5.1 (2018-07-02)
-#>  os       OS X El Capitan 10.11.6     
+#>  os       macOS  10.14                
 #>  system   x86_64, darwin15.6.0        
 #>  ui       X11                         
 #>  language (EN)                        
 #>  collate  en_US.UTF-8                 
 #>  ctype    en_US.UTF-8                 
 #>  tz       America/New_York            
-#>  date     2018-10-10
+#>  date     2018-12-16
 ```

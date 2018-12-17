@@ -4,17 +4,17 @@
 \alias{runstats.demo}
 \title{Demo visualization of package functions}
 \usage{
-runstats.demo(func.name = "RunningCov")
+runstats.demo(func.name = "Cov")
 }
 \arguments{
 \item{func.name}{Character value; one of the following:
 \itemize{
-  \item "RunningMean",
-  \item "RunningSd",
-  \item "RunningVar",
-  \item "RunningCov",
-  \item "RunningCor",
-  \item "RunningL2Norm".
+  \item "mean",
+  \item "sd",
+  \item "var",
+  \item "cov",
+  \item "cor",
+  \item "l2norm".
 }}
 }
 \value{
@@ -26,12 +26,12 @@ statistics.
 }
 \examples{
 \dontrun{
-runstats.demo(func.name = "RunningCor")
-runstats.demo(func.name = "RunningCov")
-runstats.demo(func.name = "RunningL2Norm")
-runstats.demo(func.name = "RunningMean")
-runstats.demo(func.name = "RunningSd")
-runstats.demo(func.name = "RunningVar")
+runstats.demo(func.name = "cor")
+runstats.demo(func.name = "cov")
+runstats.demo(func.name = "l2norm")
+runstats.demo(func.name = "mean")
+runstats.demo(func.name = "sd")
+runstats.demo(func.name = "var")
 }
 
 }
