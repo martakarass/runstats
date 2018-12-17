@@ -133,7 +133,7 @@ Benchmark results
 ``` r
 library(ggplot2)
 ggplot(out.df2, aes(x = x_length, y = elapsed, color = test)) + 
-  geom_line() +  geom_point(size = 3) +  scale_x_log10() + 
+  geom_line() +  geom_point(size = 3) + scale_x_log10() + 
   theme_minimal(base_size = 14) + 
   labs(x = "Vector length of x",
        y = "elapsed [sec]", color = "Method", 

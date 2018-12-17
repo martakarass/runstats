@@ -116,12 +116,12 @@ for (x.tmp in x.list){
 
 
 ```{r, echo = FALSE, eval = FALSE}
-out.df.path <- "/Users/mkaras/Dropbox/_PROJECTS/R/runstats/static/performance_rbenchmark_out1.csv"
+out.df.path <- "static/performance_rbenchmark_out1.csv"
 write.csv(out.df, out.df.path, row.names = FALSE, quote = FALSE)
 ```
 
 ```{r, echo = FALSE, eval = TRUE}
-out.df.path <- "/Users/mkaras/Dropbox/_PROJECTS/R/runstats/static/performance_rbenchmark_out1.csv"
+out.df.path <-"static/performance_rbenchmark_out1.csv"
 out.df <- read.csv(out.df.path)
 options("scipen" = 10, "digits" = 4)
 ```
@@ -161,12 +161,12 @@ for (x.tmp in x.list[c(1,2,3,4)]){
 ```
 
 ```{r, echo = FALSE, eval = FALSE}
-out.df.path <- "/Users/mkaras/Dropbox/_PROJECTS/R/runstats/static/performance_rbenchmark_out2.csv"
+out.df.path <-"static/performance_rbenchmark_out2.csv"
 write.csv(out.df2, out.df.path, row.names = FALSE, quote = FALSE)
 ```
 
 ```{r, echo = FALSE, eval = TRUE}
-out.df.path <- "/Users/mkaras/Dropbox/_PROJECTS/R/runstats/static/performance_rbenchmark_out2.csv"
+out.df.path <-"static/performance_rbenchmark_out2.csv"
 out.df2 <- read.csv(out.df.path)
 ```
 
@@ -175,7 +175,7 @@ Benchmark results
 ```{r, fig.width=10, fig.height=4}
 library(ggplot2)
 ggplot(out.df2, aes(x = x_length, y = elapsed, color = test)) + 
-  geom_line() +  geom_point(size = 3) +  scale_x_log10() + 
+  geom_line() +  geom_point(size = 3) + scale_x_log10() + 
   theme_minimal(base_size = 14) + 
   labs(x = "Vector length of x",
        y = "elapsed [sec]", color = "Method", 
