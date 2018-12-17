@@ -95,10 +95,10 @@ knitr::kable(out.df)
 | test     |  replications|  elapsed|  relative|  user.self|  sys.self|  x\_length|  pattern\_length|
 |:---------|-------------:|--------:|---------:|----------:|---------:|----------:|----------------:|
 | runstats |            10|    0.003|         1|      0.003|     0.000|       1000|              100|
-| runstats |            10|    0.026|         1|      0.022|     0.005|      10000|              100|
-| runstats |            10|    0.372|         1|      0.320|     0.050|     100000|              100|
-| runstats |            10|    5.768|         1|      5.529|     0.223|    1000000|              100|
-| runstats |            10|  124.837|         1|    119.587|     4.927|   10000000|              100|
+| runstats |            10|    0.031|         1|      0.025|     0.006|      10000|              100|
+| runstats |            10|    0.385|         1|      0.328|     0.056|     100000|              100|
+| runstats |            10|    5.694|         1|      5.509|     0.171|    1000000|              100|
+| runstats |            10|  126.393|         1|    121.007|     4.954|   10000000|              100|
 
 ##### Compare with a conventional method
 
@@ -133,7 +133,7 @@ Benchmark results
 ``` r
 library(ggplot2)
 ggplot(out.df2, aes(x = x_length, y = elapsed, color = test)) + 
-  geom_line() +  geom_point(size = 3) + scale_x_log10() + 
+  geom_line() + geom_point(size = 3) + scale_x_log10() + 
   theme_minimal(base_size = 14) + 
   labs(x = "Vector length of x",
        y = "elapsed [sec]", color = "Method", 
