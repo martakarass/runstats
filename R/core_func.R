@@ -59,32 +59,33 @@ convJU <- function(x, y){
 #' Fast Running Mean Computation
 #'
 #' @description
-#' Computes running sample mean of a sequence in a fixed width window. Uses
-#' convolution implementation via Fast Fourier Transform.
+#' Computes running sample mean of a time-series \code{x} in a fixed length window.
 #'
 #' @details
 #' The length of output vector equals the length of \code{x} vector.
-#' Parameter \code{circular} determines whether \code{x} sequence is assumed to have a  circular nature.
-#' Assume \eqn{l_x} is the length of sequence \code{x}, \code{W} is a fixed length of \code{x} sequence window.
+#' Parameter \code{circular} determines whether \code{x} time-series is assumed to have a  circular nature.
+#' Assume \eqn{l_x} is the length of time-series \code{x}, \code{W} is a fixed length of \code{x} time-series window.
 #'
 #' If \code{circular} equals \code{TRUE} then
 #'   \itemize{
-#'     \item first element of the output sequence corresponds to sample mean of \code{x[1:W]},
-#'     \item last element of the output sequence corresponds to sample mean of \code{c(x[l_x], x[1:(W - 1)])}.
+#'     \item first element of the output time-series corresponds to sample mean of \code{x[1:W]},
+#'     \item last element of the output time-series corresponds to sample mean of \code{c(x[l_x], x[1:(W - 1)])}.
 #'   }
 #'
 #' If \code{circular} equals \code{FALSE} then
 #'   \itemize{
-#'     \item first element of the output sequence corresponds to sample mean of \code{x[1:W]},
-#'     \item \eqn{l_x - W + 1}-th element of the output sequence corresponds to
+#'     \item first element of the output time-series corresponds to sample mean of \code{x[1:W]},
+#'     \item \eqn{l_x - W + 1}-th element of the output time-series corresponds to
 #'     sample mean of \code{x[(l_x - W + 1):l_x]},
-#'     \item last \code{W-1} elements of the output sequence are filled with \code{NA}.
+#'     \item last \code{W-1} elements of the output time-series are filled with \code{NA}.
 #'   }
 #'
+#' See \code{runstats.demo(func.name = "RunningMean")} for a detailed presentation.
+#'
 #' @param x A numeric vector.
-#' @param W A numeric scalar; width of \code{x} window over which sample mean is computed.
+#' @param W A numeric scalar; length of \code{x} window over which sample mean is computed.
 #' @param circular Logical; whether running sample mean is computed assuming
-#' circular nature of  \code{x} sequence (see Details).
+#' circular nature of  \code{x} time-series (see Details).
 #'
 #' @return A numeric vector.
 #'
@@ -115,31 +116,32 @@ RunningMean <- function(x, W, circular = FALSE){
 #' Fast Running Variance Computation
 #'
 #' @description
-#' Computes running sample variance of a sequence in a fixed width window. Uses
-#' convolution implementation via Fast Fourier Transform.
+#' Computes running sample variance of a time-series \code{x} in a fixed length window.
 #'
 #' @details
 #' The length of output vector equals the length of \code{x} vector.
-#' Parameter \code{circular} determines whether \code{x} sequence is assumed to have a  circular nature.
-#' Assume \eqn{l_x} is the length of sequence \code{x}, \code{W} is a fixed length of \code{x} sequence window.
+#' Parameter \code{circular} determines whether \code{x} time-series is assumed to have a  circular nature.
+#' Assume \eqn{l_x} is the length of time-series \code{x}, \code{W} is a fixed length of \code{x} time-series window.
 #'
 #' If \code{circular} equals \code{TRUE} then
 #'   \itemize{
-#'     \item first element of the output sequence corresponds to sample variance of \code{x[1:W]},
-#'     \item last element of the output sequence corresponds to sample variance of \code{c(x[l_x], x[1:(W - 1)])}.
+#'     \item first element of the output time-series corresponds to sample variance of \code{x[1:W]},
+#'     \item last element of the output time-series corresponds to sample variance of \code{c(x[l_x], x[1:(W - 1)])}.
 #'   }
 #'
 #' If \code{circular} equals \code{FALSE} then
 #'   \itemize{
-#'     \item first element of the output sequence corresponds to sample variance of \code{x[1:W]},
-#'     \item the \eqn{l_x - W + 1}-th element of the output sequence corresponds to sample variance of \code{x[(l_x - W + 1):l_x]},
-#'     \item last \code{W-1} elements of the output sequence are filled with \code{NA}.
+#'     \item first element of the output time-series corresponds to sample variance of \code{x[1:W]},
+#'     \item the \eqn{l_x - W + 1}-th element of the output time-series corresponds to sample variance of \code{x[(l_x - W + 1):l_x]},
+#'     \item last \code{W-1} elements of the output time-series are filled with \code{NA}.
 #'   }
 #'
+#' See \code{runstats.demo(func.name = "RunningVar")} for a detailed presentation.
+#'
 #' @param x A numeric vector.
-#' @param W A numeric scalar; width of \code{x} window over which sample variance is computed.
+#' @param W A numeric scalar; length of \code{x} window over which sample variance is computed.
 #' @param circular Logical; whether running sample variance is computed assuming
-#' circular nature of  \code{x} sequence (see Details).
+#' circular nature of  \code{x} time-series (see Details).
 #'
 #' @return A numeric vector.
 #'
@@ -175,31 +177,32 @@ RunningVar <- function(x, W, circular = FALSE){
 #' Fast Running Standard Deviation Computation
 #'
 #' @description
-#' Computes running sample standard deviation of a sequence in a fixed width window. Uses
-#' convolution implementation via Fast Fourier Transform.
+#' Computes running sample standard deviation of a time-series \code{x} in a fixed length window.
 #'
 #' @details
 #' The length of output vector equals the length of \code{x} vector.
-#' Parameter \code{circular} determines whether \code{x} sequence is assumed to have a  circular nature.
-#' Assume \eqn{l_x} is the length of sequence \code{x}, \code{W} is a fixed length of \code{x} sequence window.
+#' Parameter \code{circular} determines whether \code{x} time-series is assumed to have a  circular nature.
+#' Assume \eqn{l_x} is the length of time-series \code{x}, \code{W} is a fixed length of \code{x} time-series window.
 #'
 #' If \code{circular} equals \code{TRUE} then
 #'   \itemize{
-#'     \item first element of the output sequence corresponds to sample standard deviation of \code{x[1:W]},
-#'     \item last element of the output sequence corresponds to sample standard deviation of \code{c(x[l_x], x[1:(W - 1)])}.
+#'     \item first element of the output time-series corresponds to sample standard deviation of \code{x[1:W]},
+#'     \item last element of the output time-series corresponds to sample standard deviation of \code{c(x[l_x], x[1:(W - 1)])}.
 #'   }
 #'
 #' If \code{circular} equals \code{FALSE} then
 #'   \itemize{
-#'     \item first element of the output sequence corresponds to sample standard deviation of \code{x[1:W]},
-#'     \item the \eqn{l_x - W + 1}-th element of the output sequence corresponds to sample standard deviation of \code{x[(l_x - W + 1):l_x]},
-#'     \item last \code{W-1} elements of the output sequence are filled with \code{NA}.
+#'     \item first element of the output time-series corresponds to sample standard deviation of \code{x[1:W]},
+#'     \item the \eqn{l_x - W + 1}-th element of the output time-series corresponds to sample standard deviation of \code{x[(l_x - W + 1):l_x]},
+#'     \item last \code{W-1} elements of the output time-series are filled with \code{NA}.
 #'   }
 #'
+#' See \code{runstats.demo(func.name = "RunningSd")} for a detailed presentation.
+#'
 #' @param x A numeric vector.
-#' @param W A numeric scalar; width of \code{x} window over which sample variance is computed.
+#' @param W A numeric scalar; length of \code{x} window over which sample variance is computed.
 #' @param circular Logical; whether  running sample standard deviation is computed assuming
-#' circular nature of  \code{x} sequence (see Details).
+#' circular nature of  \code{x} time-series (see Details).
 #'
 #' @return A numeric vector.
 #'
@@ -226,11 +229,10 @@ RunningSd <- function(x, W, circular = FALSE){
 #' Fast Running Covariance Computation
 #'
 #' @description
-#' Computes running covariance between time-series and short-time pattern.  Uses
-#' convolution implementation via Fast Fourier Transform.
+#' Computes running covariance between time-series \code{x} and short-time pattern \code{y}.
 #'
 #' @details
-#' Computes running covariance between time-series (\code{x}) and short-time pattern (\code{y}).
+#' Computes running covariance between time-series \code{x} and short-time pattern \code{y}.
 #'
 #' The length of output vector equals the length of \code{x}.
 #' Parameter \code{circular} determines whether \code{x} time-series is assumed to have a  circular nature.
@@ -249,6 +251,8 @@ RunningSd <- function(x, W, circular = FALSE){
 #'     \item last \code{W-1} elements of the output vector are filled with \code{NA}.
 
 #'   }
+#'
+#' See \code{runstats.demo(func.name = "RunningCov")} for a detailed presentation.
 #'
 #' @param x A numeric vector.
 #' @param y A numeric vector, of equal or shorter length than  \code{x}.
@@ -296,13 +300,12 @@ RunningCov = function(x, y, circular = FALSE){
 #' Fast Running Correlation Computation
 #'
 #' @description
-#' Computes running correlation between time-series and short-time pattern.  Uses
-#' convolution via Fast Fourier Transform.
+#' Computes running correlation between time-series \code{x} and short-time pattern  \code{y}.
 #'
 #' @details
-#' Computes running correlation between time-series ( \code{x}) and short-time pattern ( \code{y}).
+#' Computes running correlation between time-series \code{x} and short-time pattern  \code{y}.
 #' The length of output vector equals the length of \code{x}.
-#' Parameter \code{circular} determines whether \code{x} sequence is assumed to have a  circular nature.
+#' Parameter \code{circular} determines whether \code{x} time-series is assumed to have a  circular nature.
 #' Assume \eqn{l_x} is the length of time-series \code{x}, \eqn{l_y} is the length of short-time pattern \code{y}.
 #'
 #' If \code{circular} equals \code{TRUE} then
@@ -317,6 +320,8 @@ RunningCov = function(x, y, circular = FALSE){
 #'     \item the \eqn{l_x - W + 1}-th element of the output vector corresponds to sample correlation between \code{x[(l_x - l_y + 1):l_x]},
 #'     \item last \code{W-1} elements of the output vector are filled with \code{NA}.
 #'   }
+#'
+#' See \code{runstats.demo(func.name = "RunningCor")} for a detailed presentation.
 #'
 #' @param x A numeric vector.
 #' @param y A numeric vector, of equal or shorter length than  \code{x}.
@@ -361,11 +366,10 @@ RunningCor = function(x, y, circular = FALSE){
 #' Fast Running L2 Norm Computation
 #'
 #' @description
-#' Computes running L2 norm between between time-series and short-time pattern.  Uses
-#' convolution via Fast Fourier Transform.
+#' Computes running L2 norm between between time-series  \code{x} and short-time pattern  \code{y}.
 #'
 #' @details
-#' Computes running L2 norm between between time-series and short-time pattern.
+#' Computes running L2 norm between between time-series  \code{x} and short-time pattern  \code{y}.
 #' The length of output vector equals the length of \code{x}.
 #' Parameter \code{circular} determines whether \code{x} time-series is assumed to have a  circular nature.
 #' Assume \eqn{l_x} is the length of time-series \code{x}, \eqn{l_y} is the length of short-time pattern \code{y}.
@@ -382,6 +386,8 @@ RunningCor = function(x, y, circular = FALSE){
 #'     \item the \eqn{l_x - W + 1}-th element of the output vector corresponds to sample L2 norm between \code{x[(l_x - l_y + 1):l_x]},
 #'     \item last \code{W-1} elements of the output vector are filled with \code{NA}.
 #'   }
+#'
+#' See \code{runstats.demo(func.name = "RunningL2Norm")} for a detailed presentation.
 #'
 #' @param x A numeric vector.
 #' @param y A numeric vector, of equal or shorter length than  \code{x}.

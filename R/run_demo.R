@@ -22,16 +22,22 @@
 #'
 #' @noRd
 #'
-plot.no.pattern <- function(func, plt.title.vec){
+plot.no.pattern <- function(func, plt.title.vec, func.name){
 
   ## Fixed constraints
-  set.seed(123)
   N <- 600
-  rnorm.vec <- rnorm(N)
-  x <- cumsum(rnorm.vec)
-
-  W <- 40
+  W <- 60
   by.val <- 10
+
+  ## Simulate signal
+  set.seed(123)
+  if (func.name %in% c("RunningSd", "RunningVar")){
+    rnorm.vec <- rnorm(N, mean = 0, sd = c(seq(1, 100, length.out = N/2), rev(seq(1, 100, length.out = N/2))))
+    x <- rnorm.vec
+  } else {
+    rnorm.vec <- rnorm(N)
+    x <- cumsum(rnorm.vec)
+  }
 
   ## Function output
   out.cir.F <- do.call(func, args = list(x = x, W = W, circular = FALSE))
@@ -39,7 +45,8 @@ plot.no.pattern <- function(func, plt.title.vec){
 
 
   ## Set window of 2 plots
-  par(mfrow = c(2, 1))
+  # par(mfrow = c(2, 1))
+  par(mfrow = c(3, 1))
   ## Predefine y axis ranges
   ylim.signalx <- range(x)
   ylim.signalx.max0 <- max(ylim.signalx) + 1
@@ -51,7 +58,8 @@ plot.no.pattern <- function(func, plt.title.vec){
   ## Sequence of x axis indices iteration
   seq.here <- sort(unique(c(seq(1, N - W + 1, by = by.val), N - W + 1)))
   ## Font size scalar
-  par.w2 <- 1
+  # par.w2 <- 1
+  par.w2 <- 1.6
 
   for(i in seq.here){
 
@@ -82,15 +90,32 @@ plot.no.pattern <- function(func, plt.title.vec){
     par(mar = c(5.1, 4.1, 3.1, 2.1), mgp = c(3, 1, 0), las = 0) ## inside (b,l,t,r)
     ## Plot body
     plot(1:i, out.cir.F[1:i], xlim = c(1, N), type = 'l', col = 'blue', lwd = 3,
-         xlab = 'Time', ylab = '',
+         xlab = '', ylab = '',
          ylim = ylim.out)
     ## Add title
     title(plt.title.vec[2], adj = 0, line = 1)
     ## Add output border mark (vertical line)
     abline(v = i, lty = 2, col = "blue")
 
+    ## Plot 3
+    ##
+    ## Margins area
+    par(mar = c(5.1, 4.1, 3.1, 2.1), mgp = c(3, 1, 0), las = 0) ## inside (b,l,t,r)
+    ## Plot body
+    plot(1:i, out.cir.F[1:i], xlim = c(1, N), type = 'l', col = 'blue', lwd = 3,
+         xlab = 'Time [s]', ylab = '',
+         ylim = ylim.out)
+    ## Add title
+    title(plt.title.vec[3], adj = 0, line = 1)
+    ## Add output border mark (vertical line)
+    abline(v = i, lty = 2, col = "blue")
+
     ## Sleep system before plotting the next plot
-    Sys.sleep(0.1)
+    if (!(i == max(seq.here))){
+      Sys.sleep(0.1)
+    } else {
+      Sys.sleep(0.03)
+    }
 
   }
 
@@ -151,7 +176,7 @@ plot.no.pattern <- function(func, plt.title.vec){
     par(mar = c(5.1, 4.1, 3.1, 2.1), mgp = c(3, 1, 0), las = 0) ## inside (b,l,t,r)
     ## Plot body
     plot(1:i, out.cir.T[1:i], xlim = c(0, N), type = 'l', col = 'blue', lwd = 3,
-         xlab = 'Time', ylab = '',
+         xlab = 'Time [s]', ylab = '',
          ylim = range(c(out.cir.F, out.cir.T), na.rm = TRUE))
     title(plt.title.vec[3], adj = 0, line = 1)
     abline(v = i, lty = 2, col = "blue")
@@ -187,7 +212,7 @@ plot.no.pattern <- function(func, plt.title.vec){
 #'
 #' @noRd
 #'
-plot.with.pattern <- function(func, plt.title.vec){
+plot.with.pattern <- function(func, plt.title.vec, func.name){
 
   ## Fixed constraints
   N <- 600
@@ -203,7 +228,9 @@ plot.with.pattern <- function(func, plt.title.vec){
 
 
   ## Set window of 2 plots
-  par(mfrow = c(2, 1))
+  # par(mfrow = c(2, 1))
+  par(mfrow = c(3, 1))
+
   ## Predefine y axis ranges
   ylim.signalx <- c(-1,1)
   ylim.signalx.max0 <- max(ylim.signalx) + 1
@@ -215,7 +242,8 @@ plot.with.pattern <- function(func, plt.title.vec){
   ## Sequence of x axis indices iteration
   seq.here <- sort(unique(c(seq(1, N - N.pat + 1, by = by.val), N - N.pat + 1)))
   ## Font size scalar
-  par.w2 <- 1
+  # par.w2 <- 1
+  par.w2 <- 1.6
 
   for(i in seq.here){
 
@@ -248,15 +276,32 @@ plot.with.pattern <- function(func, plt.title.vec){
     par(mar = c(5.1, 4.1, 3.1, 2.1), mgp = c(3, 1, 0), las = 0) ## inside (b,l,t,r)
     ## Plot body
     plot(1:i, out.cir.F[1:i], xlim = c(0, N), type = 'l', col = 'blue', lwd = 3,
-         xlab = 'Time', ylab = '',
+         xlab = '', ylab = '',
          ylim = ylim.out)
     ## Add title
     title(plt.title.vec[2], adj = 0, line = 1)
     ## Add output border mark (vertical line)
     abline(v = i, lty = 2, col = "blue")
 
+    ## Plot 3
+    ##
+    ## Margins area
+    par(mar = c(5.1, 4.1, 3.1, 2.1), mgp = c(3, 1, 0), las = 0) ## inside (b,l,t,r)
+    ## Plot body
+    plot(1:i, out.cir.F[1:i], xlim = c(0, N), type = 'l', col = 'blue', lwd = 3,
+         xlab = 'Time [s]', ylab = '',
+         ylim = ylim.out)
+    ## Add title
+    title(plt.title.vec[3], adj = 0, line = 1)
+    ## Add output border mark (vertical line)
+    abline(v = i, lty = 2, col = "blue")
+
     ## Sleep system before plotting the next plot
-    Sys.sleep(0.1)
+    if (!(i == max(seq.here))){
+      Sys.sleep(0.1)
+    } else {
+      Sys.sleep(0.03)
+    }
 
   }
 
@@ -323,13 +368,15 @@ plot.with.pattern <- function(func, plt.title.vec){
     par(mar = c(5.1, 4.1, 3.1, 2.1), mgp = c(3, 1, 0), las = 0) ## inside (b,l,t,r)
     ## Plot body
     plot(1:i, out.cir.T[1:i], xlim = c(0, N), type = 'l', col = 'blue', lwd = 3,
-         xlab = 'Time', ylab = '',
+         xlab = 'Time [s]', ylab = '',
          ylim = range(c(out.cir.F, out.cir.T), na.rm = TRUE))
     title(plt.title.vec[3], adj = 0, line = 1)
     abline(v = i, lty = 2, col = "blue")
 
     ## Sleep system before plotting the next plot
-    Sys.sleep(0.1)
+    if (!(i == max(seq.here))){
+      Sys.sleep(0.1)
+    }
   }
 
 }
@@ -380,34 +427,34 @@ runstats.demo <- function(func.name = "RunningCov"){
 
   ## Match function name in argument with the plot title
   plt.title.vec <-  switch(func.name,
-                           "RunningMean"   =  c("black: x\nred: W-width running window",
-                                               "RunningMean(x, W)",
+                           "RunningMean"   =  c("black: time-series x\nred: running window of length W",
+                                               "RunningMean(x, W, circular = FALSE)",
                                                "RunningMean(x, W, circular = TRUE)"),
 
-                           "RunningSd"     =  c("black: x\nred: W-width running window",
-                                               "RunningSd(x, W)",
+                           "RunningSd"     =  c("black: time-series x\nred: running window of length W",
+                                               "RunningSd(x, W, circular = FALSE)",
                                                "RunningSd(x, W, circular = TRUE)"),
 
-                           "RunningVar"    =  c("black: x\nred: W-width running window",
-                                               "RunningVar(x, W)",
+                           "RunningVar"    =  c("black: time-series x\nred: running window of length W",
+                                               "RunningVar(x, W, circular = FALSE)",
                                                "RunningVar(x, W, circular = TRUE)"),
 
-                           "RunningCov"    =  c("black: x\nred: running pattern",
-                                               "RunningCov(x, pattern)",
-                                               "RunningCov(x, pattern, circular = TRUE)"),
+                           "RunningCov"    =  c("black: time-series x\nred: pattern y",
+                                               "RunningCov(x, y, circular = FALSE)",
+                                               "RunningCov(x, y, circular = TRUE)"),
 
-                           "RunningCor"    =  c("black: x\nred: running pattern",
-                                               "RunningCor(x, pattern)",
-                                               "RunningCor(x, pattern, circular = TRUE)"),
+                           "RunningCor"    =  c("black: time-series x\nred: pattern y",
+                                               "RunningCor(x, y, circular = FALSE)",
+                                               "RunningCor(x, y, circular = TRUE)"),
 
-                           "RunningL2Norm" =  c("black: x\nred: running pattern",
-                                               "RunningL2Norm(x, pattern)",
-                                               "RunningL2Norm(x, pattern, circular = TRUE)"))
+                           "RunningL2Norm" =  c("black: time-series x\nred: pattern y",
+                                               "RunningL2Norm(x, y, circular = FALSE)",
+                                               "RunningL2Norm(x, y, circular = TRUE)"))
 
   if (func.name %in% c("RunningCov", "RunningCor", "RunningL2Norm")){
-    plot.with.pattern(func, plt.title.vec)
+    plot.with.pattern(func, plt.title.vec, func.name)
   } else {
-    plot.no.pattern(func, plt.title.vec)
+    plot.no.pattern(func, plt.title.vec, func.name)
   }
 
 }
