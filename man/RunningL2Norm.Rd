@@ -18,11 +18,10 @@ circular nature of  \code{x} time-series (see Details).}
 A numeric vector.
 }
 \description{
-Computes running L2 norm between between time-series and short-time pattern.  Uses
-convolution via Fast Fourier Transform.
+Computes running L2 norm between between time-series  \code{x} and short-time pattern  \code{y}.
 }
 \details{
-Computes running L2 norm between between time-series and short-time pattern.
+Computes running L2 norm between between time-series  \code{x} and short-time pattern  \code{y}.
 The length of output vector equals the length of \code{x}.
 Parameter \code{circular} determines whether \code{x} time-series is assumed to have a  circular nature.
 Assume \eqn{l_x} is the length of time-series \code{x}, \eqn{l_y} is the length of short-time pattern \code{y}.
@@ -39,6 +38,8 @@ If \code{circular} equals \code{FALSE} then
     \item the \eqn{l_x - W + 1}-th element of the output vector corresponds to sample L2 norm between \code{x[(l_x - l_y + 1):l_x]},
     \item last \code{W-1} elements of the output vector are filled with \code{NA}.
   }
+
+See \code{runstats.demo(func.name = "RunningL2Norm")} for a detailed presentation.
 }
 \examples{
 ## Ex.1.

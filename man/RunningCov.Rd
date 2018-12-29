@@ -18,11 +18,10 @@ circular nature of  \code{x} time-series (see Details).}
 A numeric vector.
 }
 \description{
-Computes running covariance between time-series and short-time pattern.  Uses
-convolution implementation via Fast Fourier Transform.
+Computes running covariance between time-series \code{x} and short-time pattern \code{y}.
 }
 \details{
-Computes running covariance between time-series (\code{x}) and short-time pattern (\code{y}).
+Computes running covariance between time-series \code{x} and short-time pattern \code{y}.
 
 The length of output vector equals the length of \code{x}.
 Parameter \code{circular} determines whether \code{x} time-series is assumed to have a  circular nature.
@@ -40,6 +39,8 @@ If \code{circular} equals \code{FALSE} then
     \item the \eqn{l_x - W + 1}-th last element of the output vector corresponds to sample covariance between \code{x[(l_x - l_y + 1):l_x]},
     \item last \code{W-1} elements of the output vector are filled with \code{NA}.
   }
+
+See \code{runstats.demo(func.name = "RunningCov")} for a detailed presentation.
 }
 \examples{
 x <- sin(seq(0, 1, length.out = 1000) * 2 * pi * 6)
