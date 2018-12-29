@@ -73,14 +73,14 @@ To better explain the details of running statistics, package's function `runstat
 runstats.demo("RunningCor")
 ```
 
-![](https://i.imgur.com/DgIW77a.gif)
+![](https://i.imgur.com/JQObAu7.gif)
 
 ```{r, eval = FALSE}
 ## Example: demo for running mean method 
 runstats.demo("RunningMean")
 ```
 
-![](https://i.imgur.com/VabjavU.gif)
+![](https://i.imgur.com/FWah3aG.gif)
 
 
 ### Performance

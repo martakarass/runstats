@@ -54,14 +54,14 @@ To better explain the details of running statistics, package's function `runstat
 runstats.demo("RunningCor")
 ```
 
-![](https://i.imgur.com/DgIW77a.gif)
+![](https://i.imgur.com/JQObAu7.gif)
 
 ``` r
 ## Example: demo for running mean method 
 runstats.demo("RunningMean")
 ```
 
-![](https://i.imgur.com/VabjavU.gif)
+![](https://i.imgur.com/FWah3aG.gif)
 
 ### Performance
 
@@ -155,5 +155,5 @@ sessioninfo::platform_info()
 #>  collate  en_US.UTF-8                 
 #>  ctype    en_US.UTF-8                 
 #>  tz       America/New_York            
-#>  date     2018-12-17
+#>  date     2018-12-28
 ```

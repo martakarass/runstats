@@ -26,7 +26,7 @@ plot.no.pattern <- function(func, plt.title.vec, func.name){
 
   ## Fixed constraints
   N <- 600
-  W <- 60
+  W <- 100
   by.val <- 10
 
   ## Simulate signal
