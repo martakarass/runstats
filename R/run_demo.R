@@ -129,6 +129,12 @@ plot.no.pattern <- function(func, plt.title.vec, func.name){
 
   for(i in seq.here){
 
+    ## If this is the last plot, clean the plot space
+    if (i == max(seq.here)){
+      dev.off()
+      par(mfrow = c(3, 1))
+    }
+
     # Set all plots size
     par(cex.lab = par.w3, cex.axis = par.w3* 2/3, cex.main = par.w3, cex.sub = par.w3)
 
@@ -314,6 +320,12 @@ plot.with.pattern <- function(func, plt.title.vec, func.name){
   par.w3 <- 1.6
 
   for(i in seq.here){
+
+    ## If this is the last plot, clean the plot space
+    if (i == max(seq.here)){
+      dev.off()
+      par(mfrow = c(3, 1))
+    }
 
     # Set all plots size
     par(cex.lab = par.w3, cex.axis = par.w3 * 2/3, cex.main = par.w3, cex.sub = par.w3)
