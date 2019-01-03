@@ -6,7 +6,7 @@
 #' @param func runstats package core function
 #' @param plt.title.vec vector of function-specific plot titles
 #'
-#' @importFrom grDevices rgb
+#' @importFrom grDevices rgb dev.off
 #' @importFrom graphics abline lines par plot points polygon title
 #'
 #' @return \code{NULL}
@@ -202,7 +202,7 @@ plot.no.pattern <- function(func, plt.title.vec, func.name){
 #' @param func runstats package core function
 #' @param plt.title.vec vector of function-specific plot titles
 #'
-#' @importFrom grDevices rgb
+#' @importFrom grDevices rgb dev.off
 #' @importFrom graphics abline lines par plot points polygon title
 #'
 #' @return \code{NULL}
