@@ -136,7 +136,7 @@ ggplot(out.df2, aes(x = x_length, y = elapsed, color = test)) +
   geom_line() + geom_point(size = 3) + scale_x_log10() + 
   theme_minimal(base_size = 14) + 
   labs(x = "Vector length of x",
-       y = "elapsed [sec]", color = "Method", 
+       y = "elapsed [s]", color = "Method", 
        title = "Running covariance: rbenchmark elapsed time comparison")
 ```
 
@@ -155,5 +155,5 @@ sessioninfo::platform_info()
 #>  collate  en_US.UTF-8                 
 #>  ctype    en_US.UTF-8                 
 #>  tz       America/New_York            
-#>  date     2018-12-28
+#>  date     2019-01-03
 ```
