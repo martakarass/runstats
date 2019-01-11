@@ -10,3 +10,6 @@ coverage:
       default:
         target: auto
         threshold: 1%
+
+ignore:
+  - "R/run_demo.R"  # ignore folders and all its contents
