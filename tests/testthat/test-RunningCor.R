@@ -51,3 +51,15 @@ test_that("Checking RunningCor via FFT returns what is equivalent with conventio
   expect_true(all(is.na(output) == is.na(output.conv)))
 })
 
+
+
+test_that("Checking error is thrown when the length of y is larger than the length of x", {
+  set.seed(20180618)
+  x <- rnorm(10)
+  W <- 11
+  y <- rnorm(W)
+  expect_error(RunningCor(x, y, circular = FALSE))
+  expect_error(RunningCor(x, y, circular = TRUE))
+})
+
+

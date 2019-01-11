@@ -69,6 +69,14 @@ test_that("Checking RunningMean via FFT returns what is equivalent with conventi
 
 
 
+test_that("Checking error is thrown when W is larger than the length of x", {
+  set.seed(20180618)
+  x <- rnorm(10)
+  W <- 11
+  expect_error(RunningMean(x, W, circular = FALSE))
+  expect_error(RunningMean(x, W, circular = TRUE))
+})
+
 
 
 

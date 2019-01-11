@@ -41,7 +41,6 @@ convJU <- function(x, y){
 
   N1 <- length(x)
   N2 <- length(y)
-  if (N2 > N1) stop("y must be of shorter of equal length than x")
 
   y0 <- append(y, rep(0, N1 - N2))
 
@@ -97,6 +96,8 @@ convJU <- function(x, y){
 #' @export
 #'
 RunningMean <- function(x, W, circular = FALSE){
+
+  if (W > length(x)) stop("W must be smaller or equal to the length of x")
 
   ## constant value=1 segment
   win <- rep(1, W)
@@ -154,6 +155,8 @@ RunningMean <- function(x, W, circular = FALSE){
 #' @export
 #'
 RunningVar <- function(x, W, circular = FALSE){
+
+  if (W > length(x)) stop("W must be smaller or equal to the length of x")
 
   ## constant value=1 segment
   win <- rep(1, W)
@@ -274,7 +277,7 @@ RunningSd <- function(x, W, circular = FALSE){
 #'
 RunningCov = function(x, y, circular = FALSE){
 
-  if (length(x) < length(y)) stop("Vector x should be no shorter than vector y")
+  if (length(x) < length(y)) stop("Vector x cannot be no shorter than vector y")
 
   ## constant value=1 segment of length equal to length of vector y
   W   <- length(y)
@@ -340,8 +343,6 @@ RunningCov = function(x, y, circular = FALSE){
 #' @export
 #'
 RunningCor = function(x, y, circular = FALSE){
-
-  if (length(x) < length(y)) stop("Vector x should be no shorter than vector y")
 
   ## unbiased estimator of sample covariance
   covxy <- RunningCov(x, y, circular)
@@ -417,15 +418,17 @@ RunningL2Norm <- function(x, y, circular = FALSE){
   N1 <- length(x)
   N2 <- length(y)
 
+  if (N1 < N2) stop("Vector x cannot be no shorter than vector y")
+
   m <- rep(1, N2)
 
-  d <- convJU(x^2, m)  - 2 * convJU(x, y) + sum(y^2)
-  d[d < 0] <- 0
-  d <- sqrt(d)
-  d <- d[1:N1]
+  l2normxy <- convJU(x^2, m)  - 2 * convJU(x, y) + sum(y^2)
+  l2normxy[l2normxy < 0] <- 0
+  l2normxy <- sqrt(l2normxy)
+  l2normxy <- l2normxy[1:N1]
 
   ## trim outout tail if not circular
-  if (!circular) d[(N1 - N2 + 2) : N1] <- NA
+  if (!circular) l2normxy[(N1 - N2 + 2) : N1] <- NA
 
-  return(d)
+  return(l2normxy)
 }

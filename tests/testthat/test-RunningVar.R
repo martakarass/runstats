@@ -64,3 +64,11 @@ test_that("Checking RunningVar via FFT returns what is equivalent with conventio
 
 })
 
+
+test_that("Checking error is thrown when W is larger than the length of x", {
+  set.seed(20180618)
+  x <- rnorm(10)
+  W <- 11
+  expect_error(RunningVar(x, W, circular = FALSE))
+  expect_error(RunningVar(x, W, circular = TRUE))
+})

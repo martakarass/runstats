@@ -66,3 +66,12 @@ test_that("Checking RunningSd via FFT returns what is equivalent with convention
 
 })
 
+
+test_that("Checking error is thrown when W is larger than the length of x", {
+  set.seed(20180618)
+  x <- rnorm(10)
+  W <- 11
+  expect_error(RunningSd(x, W, circular = FALSE))
+  expect_error(RunningSd(x, W, circular = TRUE))
+})
+

@@ -54,3 +54,14 @@ test_that("Checking RunningCov via FFT returns what is equivalent with conventio
 
 })
 
+
+
+test_that("Checking error is thrown when the length of y is larger than the length of x", {
+  set.seed(20180618)
+  x <- rnorm(10)
+  W <- 11
+  y <- rnorm(W)
+  expect_error(RunningCov(x, y, circular = FALSE))
+  expect_error(RunningCov(x, y, circular = TRUE))
+})
+
