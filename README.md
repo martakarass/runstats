@@ -132,12 +132,21 @@ Benchmark results
 
 ``` r
 library(ggplot2)
-ggplot(out.df2, aes(x = x_length, y = elapsed, color = test)) + 
+
+plt1 <- 
+  ggplot(out.df2, aes(x = x_length, y = elapsed, color = test)) + 
   geom_line() + geom_point(size = 3) + scale_x_log10() + 
   theme_minimal(base_size = 14) + 
   labs(x = "Vector length of x",
        y = "elapsed [s]", color = "Method", 
-       title = "Running covariance: rbenchmark elapsed time comparison")
+       title = "Running covariance rbenchmark") + 
+  theme(legend.position = "bottom")
+plt2 <- 
+  plt1 + 
+  scale_y_log10() + 
+  labs(y = "log of elapsed [s]")
+
+cowplot::plot_grid(plt1, plt2, nrow = 1, labels = c('A', 'B'))
 ```
 
 <img src="man/figures/README-unnamed-chunk-13-1.png" width="100%" />
@@ -155,5 +164,5 @@ sessioninfo::platform_info()
 #>  collate  en_US.UTF-8                 
 #>  ctype    en_US.UTF-8                 
 #>  tz       America/New_York            
-#>  date     2019-01-03
+#>  date     2019-01-11
 ```

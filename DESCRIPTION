@@ -20,5 +20,6 @@ Suggests:
     knitr,
     rmarkdown,
     sessioninfo,
-    rbenchmark
+    rbenchmark,
+    cowplot
 VignetteBuilder: knitr
