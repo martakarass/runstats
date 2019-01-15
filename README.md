@@ -164,5 +164,5 @@ sessioninfo::platform_info()
 #>  collate  en_US.UTF-8                 
 #>  ctype    en_US.UTF-8                 
 #>  tz       America/New_York            
-#>  date     2019-01-11
+#>  date     2019-01-15
 ```
