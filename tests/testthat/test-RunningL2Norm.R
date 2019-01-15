@@ -51,3 +51,14 @@ test_that("Checking RunningL2Norm via FFT returns what is equivalent with conven
 })
 
 
+
+
+test_that("Checking error is thrown when the length of y is larger than the length of x", {
+  set.seed(20180618)
+  x <- rnorm(10)
+  W <- 11
+  y <- rnorm(W)
+  expect_error(RunningL2Norm(x, y, circular = FALSE))
+  expect_error(RunningL2Norm(x, y, circular = TRUE))
+})
+
