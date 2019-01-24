@@ -6,6 +6,7 @@ inst/doc
 .DS_Store
 README.Rmd
 README_cache/
+vignettes/man/
 vignettes/using-runstats_cache/
 vignettes/using-runstats.Rmd
 vignettes/using-runstats.R

@@ -3,4 +3,5 @@
 ^\.travis\.yml$
 ^README\.Rmd$
 ^.*\.Rproj$
-^\.Rproj\.user$
+^\.Rproj\.user$s
+^vignettes/i_get_built\.Rmd$
