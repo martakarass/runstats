@@ -40,7 +40,7 @@ out2 <- RunningMean(x, W = 100, circular = TRUE)
 
 ### Running statistics
 
-To better explain the details of running statistics, package's function `runstats.demo(func.name)` allows to vizualize how the output of each running statistics method is generated. To run the demo, use `func.name` being one of the methods' names:
+To better explain the details of running statistics, package's function `runstats.demo(func.name)` allows to visualize how the output of each running statistics method is generated. To run the demo, use `func.name` being one of the methods' names:
 
 1.  `"RunningMean"`,
 2.  `"RunningSd"`,
