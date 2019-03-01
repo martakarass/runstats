@@ -14,6 +14,10 @@ Package `runstats` provides methods for fast computation of running sample stati
 5.  correlation,
 6.  euclidean distance.
 
+### Website
+
+Package website is located [here](https://martakarass.github.io/runstats/).
+
 ### Installation
 
 ``` r
