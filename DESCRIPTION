@@ -4,7 +4,8 @@ Title: Fast Computation of Running Statistics for Time Series
 Version: 1.0.1
 Authors@R: c(
   person("Marta", "Karas", email = "marta.karass@gmail.com", role = c("aut", "cre")),
-  person("Jacek", "Urbanek", role = c("aut"))
+  person("Jacek", "Urbanek", role = c("aut")),
+  person("John", "Muschelli", role = c("ctb"))
   )
 Description: Provides methods for fast computation of running sample 
     statistics for time series. These include: (1) mean, (2) 
