@@ -138,13 +138,13 @@ plt1 <-
   geom_line() + geom_point(size = 3) + scale_x_log10() + 
   theme_minimal(base_size = 14) + 
   labs(x = "Vector length of x",
-       y = "elapsed [s]", color = "Method", 
+       y = "Elapsed [s]", color = "Method", 
        title = "Running covariance rbenchmark") + 
   theme(legend.position = "bottom")
 plt2 <- 
   plt1 + 
   scale_y_log10() + 
-  labs(y = "log of elapsed [s]")
+  labs(y = "Log of elapsed [s]")
 
 cowplot::plot_grid(plt1, plt2, nrow = 1, labels = c('A', 'B'))
 ```
@@ -156,13 +156,13 @@ Platform information
 ``` r
 sessioninfo::platform_info()
 #>  setting  value                       
-#>  version  R version 3.5.1 (2018-07-02)
-#>  os       macOS  10.14                
+#>  version  R version 3.5.2 (2018-12-20)
+#>  os       macOS Mojave 10.14.2        
 #>  system   x86_64, darwin15.6.0        
 #>  ui       X11                         
 #>  language (EN)                        
 #>  collate  en_US.UTF-8                 
 #>  ctype    en_US.UTF-8                 
 #>  tz       America/New_York            
-#>  date     2019-01-15
+#>  date     2019-02-28
 ```

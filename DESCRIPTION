@@ -1,7 +1,7 @@
 Package: runstats
 Type: Package
 Title: Fast Computation of Running Statistics for Time Series
-Version: 0.1.0
+Version: 1.0.1
 Authors@R: c(
   person("Marta", "Karas", email = "marta.karass@gmail.com", role = c("aut", "cre")),
   person("Jacek", "Urbanek", role = c("aut"))
@@ -27,5 +27,7 @@ Suggests:
     rmarkdown,
     sessioninfo,
     rbenchmark,
-    cowplot
+    cowplot,
+    spelling
 VignetteBuilder: knitr
+Language: en-US

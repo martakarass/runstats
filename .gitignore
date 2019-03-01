@@ -4,8 +4,8 @@ inst/doc
 .RData
 .Ruserdata
 .DS_Store
-README.Rmd
 README_cache/
 vignettes/man/
 vignettes/using-runstats_cache/
 vignettes/using-runstats.R
+vignettes/using-runstats.html

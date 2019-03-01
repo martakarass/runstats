@@ -1,15 +1,24 @@
 ---
-title: "Examples of `runstat` package"
-author: "Marta Karas"
-date: "2019-02-28"
-output: rmarkdown::html_vignette
-vignette: >
-  %\VignetteEngine{knitr::knitr}
-  %\VignetteIndexEntry{Examples of `runstat` package}
-  %\VignetteEncoding{UTF-8}
+output: github_document
 ---
 
 
+[![Travis build status](https://travis-ci.com/martakarass/runstats.svg?branch=master)](https://travis-ci.com/martakarass/runstats)
+[![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/martakarass/runstats?branch=master&svg=true)](https://ci.appveyor.com/project/martakarass/runstats)
+ [![Coverage status](https://codecov.io/gh/martakarass/runstats/branch/master/graph/badge.svg)](https://codecov.io/github/martakarass/runstats?branch=master)
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%",
+  cache = FALSE
+)
+```
 
 # runstats
 
@@ -24,16 +33,14 @@ Package `runstats` provides methods for fast computation of running sample stati
 
 ### Installation
 
-
-```r
+```{r, eval = FALSE}
 devtools::install_github("martakarass/runstats")
 ```
 
 
 ### Usage 
 
-
-```r
+```{r, eval = FALSE}
 library(runstats)
 
 ## Example: running correlation
@@ -61,16 +68,14 @@ To better explain the details of running statistics, package's function `runstat
 5. `"RunningCor"`,
 6. `"RunningL2Norm"`.
 
-
-```r
+```{r, eval = FALSE}
 ## Example: demo for running correlation method  
 runstats.demo("RunningCor")
 ```
 
 ![](https://i.imgur.com/JQObAu7.gif)
 
-
-```r
+```{r, eval = FALSE}
 ## Example: demo for running mean method 
 runstats.demo("RunningMean")
 ```
@@ -82,10 +87,12 @@ runstats.demo("RunningMean")
 
 We use `rbenchmark` to measure elapsed time of `RunningCov` execution, for different lengths of time-series `x` and fixed length of the shorter pattern `y`.
 
+```{r, echo=FALSE, include=FALSE}
+library(rbenchmark)
+library(ggplot2)
+```
 
-
-
-```r
+```{r, eval = FALSE}
 library(rbenchmark)
 
 set.seed (20181010)
@@ -108,32 +115,28 @@ for (x.tmp in x.list){
 ```
 
 
+```{r, echo = FALSE, eval = FALSE}
 
+out.df.path <- "inst/benchmark_results/2018-12-17-performance_rbenchmark_suite1.csv"
+write.csv(out.df, out.df.path, row.names = FALSE, quote = FALSE)
+```
 
-
-
-
-
-```r
-knitr::kable(out.df)
+```{r, echo = FALSE, eval = TRUE}
+out.df.path <- "inst/benchmark_results/2018-12-17-performance_rbenchmark_suite1.csv"
+out.df <- read.csv(out.df.path)
+options("scipen" = 10, "digits" = 4)
 ```
 
 
-
-|test     | replications| elapsed| relative| user.self| sys.self| x_length| pattern_length|
-|:--------|------------:|-------:|--------:|---------:|--------:|--------:|--------------:|
-|runstats |           10|   0.003|        1|     0.003|    0.000|     1000|            100|
-|runstats |           10|   0.031|        1|     0.025|    0.006|    10000|            100|
-|runstats |           10|   0.385|        1|     0.328|    0.056|   100000|            100|
-|runstats |           10|   5.694|        1|     5.509|    0.171|  1000000|            100|
-|runstats |           10| 126.393|        1|   121.007|    4.954| 10000000|            100|
+```{r}
+knitr::kable(out.df)
+```
 
 ##### Compare with a conventional method 
 
 To compare `RunStats` performance with "conventional" loop-based way of computing running covariance in `R`, we use `rbenchmark` package to measure elapsed time of `RunStats::RunningCov` and running covariance implemented with `sapply` loop, for different lengths of time-series `x` and fixed length of the shorter time-series `y`.
 
-
-```r
+```{r, eval = FALSE}
 ## Conventional approach 
 RunningCov.sapply <- function(x, y){
   l_x <- length(x)
@@ -158,15 +161,19 @@ for (x.tmp in x.list[c(1,2,3,4)]){
 
 ```
 
+```{r, echo = FALSE, eval = FALSE}
+out.df.path <- "inst/benchmark_results/2018-12-17-performance_rbenchmark_suite2.csv"
+write.csv(out.df2, out.df.path, row.names = FALSE, quote = FALSE)
+```
 
-
-
-
+```{r, echo = FALSE, eval = TRUE}
+out.df.path <- "inst/benchmark_results/2018-12-17-performance_rbenchmark_suite2.csv"
+out.df2 <- read.csv(out.df.path)
+```
 
 Benchmark results
 
-
-```r
+```{r, fig.width=10, fig.height=5}
 library(ggplot2)
 
 plt1 <- 
@@ -174,32 +181,25 @@ plt1 <-
   geom_line() + geom_point(size = 3) + scale_x_log10() + 
   theme_minimal(base_size = 14) + 
   labs(x = "Vector length of x",
-       y = "elapsed [s]", color = "Method", 
+       y = "Elapsed [s]", color = "Method", 
        title = "Running covariance rbenchmark") + 
   theme(legend.position = "bottom")
 plt2 <- 
   plt1 + 
   scale_y_log10() + 
-  labs(y = "log of elapsed [s]")
+  labs(y = "Log of elapsed [s]")
 
 cowplot::plot_grid(plt1, plt2, nrow = 1, labels = c('A', 'B'))
 ```
 
-<img src="man/figures/README-unnamed-chunk-13-1.png" title="plot of chunk unnamed-chunk-13" alt="plot of chunk unnamed-chunk-13" width="100%" />
-
 Platform information
 
-
-```r
+```{r}
 sessioninfo::platform_info()
-#>  setting  value                       
-#>  version  R version 3.5.2 (2018-12-20)
-#>  os       macOS Sierra 10.12.6        
-#>  system   x86_64, darwin15.6.0        
-#>  ui       X11                         
-#>  language (EN)                        
-#>  collate  C                           
-#>  ctype    en_US.UTF-8                 
-#>  tz       America/New_York            
-#>  date     2019-02-28
 ```
+
+
+
+
+
+

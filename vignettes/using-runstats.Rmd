@@ -1,11 +1,11 @@
 ---
-title: "Examples of `runstat` package"
+title: "Examples of using runstats package "
 author: "Marta Karas"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteEngine{knitr::knitr}
-  %\VignetteIndexEntry{Examples of `runstat` package}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteIndexEntry{Examples of using runstats package}
   %\VignetteEncoding{UTF-8}
 ---
 
@@ -14,8 +14,7 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
   fig.path = "man/figures/README-",
-  out.width = "100%",
-  cache = FALSE
+  out.width = "100%"
 )
 ```
 
@@ -181,13 +180,13 @@ plt1 <-
   geom_line() + geom_point(size = 3) + scale_x_log10() + 
   theme_minimal(base_size = 14) + 
   labs(x = "Vector length of x",
-       y = "elapsed [s]", color = "Method", 
+       y = "Elapsed [s]", color = "Method", 
        title = "Running covariance rbenchmark") + 
   theme(legend.position = "bottom")
 plt2 <- 
   plt1 + 
   scale_y_log10() + 
-  labs(y = "log of elapsed [s]")
+  labs(y = "Log of elapsed [s]")
 
 cowplot::plot_grid(plt1, plt2, nrow = 1, labels = c('A', 'B'))
 ```
