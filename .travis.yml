@@ -11,7 +11,13 @@ os:
 
 r:
   - release
-#  - devel
+  - devel
+  - oldrel
+
+matrix:
+  allow_failures:
+    - r: devel
+    - r: oldrel
 
 r_packages:
   - covr
