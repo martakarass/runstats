@@ -55,4 +55,4 @@ they generate animantions and they CANNOT be executed in less then 5 sec, hence 
     Please either add runstats::: to the function calls in the examples, 
     omit these examples or export these functions.
 
-I have removed examples from unexported function in question, that is, `convJU()` function in core_func.R. I also added tag `@noRd` to this function, and removed corresponding .Rd file. 
+I have removed examples from the unexported function in question, that is, `convJU()` function in core_func.R. I also added tag `@noRd` to this function, and removed corresponding .Rd file. 

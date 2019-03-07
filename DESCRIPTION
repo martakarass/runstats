@@ -3,9 +3,12 @@ Type: Package
 Title: Fast Computation of Running Statistics for Time Series
 Version: 1.0.1
 Authors@R: c(
-  person("Marta", "Karas", email = "marta.karass@gmail.com", role = c("aut", "cre")),
-  person("Jacek", "Urbanek", role = c("aut")),
-  person("John", "Muschelli", role = c("ctb"))
+  person("Marta", "Karas", email = "marta.karass@gmail.com", role = c("aut", "cre"), 
+      comment = c(ORCID = "0000-0001-5889-3970")),
+  person("Jacek", "Urbanek", role = c("aut"), 
+      comment = c(ORCID = "0000-0002-1890-8899")),
+  person("John", "Muschelli", role = c("ctb"), 
+      comment = c(ORCID = "0000-0001-6469-1750"))
   )
 Description: Provides methods for fast computation of running sample 
     statistics for time series. These include: (1) mean, (2) 
