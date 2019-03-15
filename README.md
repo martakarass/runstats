@@ -1,11 +1,22 @@
 
-[![Travis build status](https://travis-ci.com/martakarass/runstats.svg?branch=master)](https://travis-ci.com/martakarass/runstats) [![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/martakarass/runstats?branch=master&svg=true)](https://ci.appveyor.com/project/martakarass/runstats) [![Coverage status](https://codecov.io/gh/martakarass/runstats/branch/master/graph/badge.svg)](https://codecov.io/github/martakarass/runstats?branch=master)
+[![Travis build
+status](https://travis-ci.com/martakarass/runstats.svg?branch=master)](https://travis-ci.com/martakarass/runstats)
+[![AppVeyor build
+status](https://ci.appveyor.com/api/projects/status/github/martakarass/runstats?branch=master&svg=true)](https://ci.appveyor.com/project/martakarass/runstats)
+[![Coverage
+status](https://codecov.io/gh/martakarass/runstats/branch/master/graph/badge.svg)](https://codecov.io/github/martakarass/runstats?branch=master)
+[![CRAN
+status](https://www.r-pkg.org/badges/version/runstats)](https://cran.r-project.org/package=runstats)
+[![](https://cranlogs.r-pkg.org/badges/grand-total/runstats)](https://cran.r-project.org/package=runstats)
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-runstats
-========
 
-Package `runstats` provides methods for fast computation of running sample statistics for time series. The methods utilize Convolution Theorem to compute convolutions via Fast Fourier Transform (FFT). Implemented running statistics include:
+# runstats
+
+Package `runstats` provides methods for fast computation of running
+sample statistics for time series. The methods utilize Convolution
+Theorem to compute convolutions via Fast Fourier Transform (FFT).
+Implemented running statistics include:
 
 1.  mean,
 2.  standard deviation,
@@ -16,7 +27,8 @@ Package `runstats` provides methods for fast computation of running sample stati
 
 ### Website
 
-Package website is located [here](https://martakarass.github.io/runstats/).
+Package website is located
+[here](https://martakarass.github.io/runstats/).
 
 ### Installation
 
@@ -44,7 +56,10 @@ out2 <- RunningMean(x, W = 100, circular = TRUE)
 
 ### Running statistics
 
-To better explain the details of running statistics, package's function `runstats.demo(func.name)` allows to visualize how the output of each running statistics method is generated. To run the demo, use `func.name` being one of the methods' names:
+To better explain the details of running statistics, package’s function
+`runstats.demo(func.name)` allows to visualize how the output of each
+running statistics method is generated. To run the demo, use `func.name`
+being one of the methods’ names:
 
 1.  `"RunningMean"`,
 2.  `"RunningSd"`,
@@ -52,6 +67,8 @@ To better explain the details of running statistics, package's function `runstat
 4.  `"RunningCov"`,
 5.  `"RunningCor"`,
 6.  `"RunningL2Norm"`.
+
+<!-- end list -->
 
 ``` r
 ## Example: demo for running correlation method  
@@ -69,7 +86,9 @@ runstats.demo("RunningMean")
 
 ### Performance
 
-We use `rbenchmark` to measure elapsed time of `RunningCov` execution, for different lengths of time-series `x` and fixed length of the shorter pattern `y`.
+We use `rbenchmark` to measure elapsed time of `RunningCov` execution,
+for different lengths of time-series `x` and fixed length of the shorter
+pattern `y`.
 
 ``` r
 library(rbenchmark)
@@ -96,17 +115,21 @@ for (x.tmp in x.list){
 knitr::kable(out.df)
 ```
 
-| test     |  replications|  elapsed|  relative|  user.self|  sys.self|  x\_length|  pattern\_length|
-|:---------|-------------:|--------:|---------:|----------:|---------:|----------:|----------------:|
-| runstats |            10|    0.003|         1|      0.003|     0.000|       1000|              100|
-| runstats |            10|    0.031|         1|      0.025|     0.006|      10000|              100|
-| runstats |            10|    0.385|         1|      0.328|     0.056|     100000|              100|
-| runstats |            10|    5.694|         1|      5.509|     0.171|    1000000|              100|
-| runstats |            10|  126.393|         1|    121.007|     4.954|   10000000|              100|
+| test     | replications | elapsed | relative | user.self | sys.self | x\_length | pattern\_length |
+| :------- | -----------: | ------: | -------: | --------: | -------: | --------: | --------------: |
+| runstats |           10 |   0.003 |        1 |     0.003 |    0.000 |      1000 |             100 |
+| runstats |           10 |   0.031 |        1 |     0.025 |    0.006 |     10000 |             100 |
+| runstats |           10 |   0.385 |        1 |     0.328 |    0.056 |    100000 |             100 |
+| runstats |           10 |   5.694 |        1 |     5.509 |    0.171 |   1000000 |             100 |
+| runstats |           10 | 126.393 |        1 |   121.007 |    4.954 |  10000000 |             100 |
 
 ##### Compare with a conventional method
 
-To compare `RunStats` performance with "conventional" loop-based way of computing running covariance in `R`, we use `rbenchmark` package to measure elapsed time of `RunStats::RunningCov` and running covariance implemented with `sapply` loop, for different lengths of time-series `x` and fixed length of the shorter time-series `y`.
+To compare `RunStats` performance with “conventional” loop-based way of
+computing running covariance in `R`, we use `rbenchmark` package to
+measure elapsed time of `RunStats::RunningCov` and running covariance
+implemented with `sapply` loop, for different lengths of time-series `x`
+and fixed length of the shorter time-series `y`.
 
 ``` r
 ## Conventional approach 
@@ -168,5 +191,5 @@ sessioninfo::platform_info()
 #>  collate  en_US.UTF-8                 
 #>  ctype    en_US.UTF-8                 
 #>  tz       America/New_York            
-#>  date     2019-03-07
+#>  date     2019-03-15
 ```

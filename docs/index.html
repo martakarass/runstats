@@ -111,24 +111,24 @@
 <div id="installation" class="section level3">
 <h3 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h3>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">devtools<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/devtools/topics/reexports">install_github</a></span>(<span class="st">"martakarass/runstats"</span>)</code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1">devtools<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/devtools/topics/reexports">install_github</a></span>(<span class="st">"martakarass/runstats"</span>)</a></code></pre></div>
 </div>
 <div id="usage" class="section level3">
 <h3 class="hasAnchor">
 <a href="#usage" class="anchor"></a>Usage</h3>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(runstats)
-
-## Example: running correlation
-x0 &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/Trig">sin</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/seq">seq</a></span>(<span class="dv">0</span>, <span class="dv">2</span> <span class="op">*</span><span class="st"> </span>pi <span class="op">*</span><span class="st"> </span><span class="dv">5</span>, <span class="dt">length.out =</span> <span class="dv">1000</span>))
-x  &lt;-<span class="st"> </span>x0 <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/Normal">rnorm</a></span>(<span class="dv">1000</span>, <span class="dt">sd =</span> <span class="fl">0.1</span>)
-pattern &lt;-<span class="st"> </span>x0[<span class="dv">1</span><span class="op">:</span><span class="dv">100</span>]
-out1 &lt;-<span class="st"> </span><span class="kw"><a href="reference/RunningCor.html">RunningCor</a></span>(x, pattern)
-out2 &lt;-<span class="st"> </span><span class="kw"><a href="reference/RunningCor.html">RunningCor</a></span>(x, pattern, <span class="dt">circular =</span> <span class="ot">TRUE</span>)
-
-## Example: running mean
-x &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/cumsum">cumsum</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/Normal">rnorm</a></span>(<span class="dv">1000</span>))
-out1 &lt;-<span class="st"> </span><span class="kw"><a href="reference/RunningMean.html">RunningMean</a></span>(x, <span class="dt">W =</span> <span class="dv">100</span>)
-out2 &lt;-<span class="st"> </span><span class="kw"><a href="reference/RunningMean.html">RunningMean</a></span>(x, <span class="dt">W =</span> <span class="dv">100</span>, <span class="dt">circular =</span> <span class="ot">TRUE</span>)</code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(runstats)</a>
+<a class="sourceLine" id="cb2-2" title="2"></a>
+<a class="sourceLine" id="cb2-3" title="3"><span class="co">## Example: running correlation</span></a>
+<a class="sourceLine" id="cb2-4" title="4">x0 &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/Trig">sin</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/seq">seq</a></span>(<span class="dv">0</span>, <span class="dv">2</span> <span class="op">*</span><span class="st"> </span>pi <span class="op">*</span><span class="st"> </span><span class="dv">5</span>, <span class="dt">length.out =</span> <span class="dv">1000</span>))</a>
+<a class="sourceLine" id="cb2-5" title="5">x  &lt;-<span class="st"> </span>x0 <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/Normal">rnorm</a></span>(<span class="dv">1000</span>, <span class="dt">sd =</span> <span class="fl">0.1</span>)</a>
+<a class="sourceLine" id="cb2-6" title="6">pattern &lt;-<span class="st"> </span>x0[<span class="dv">1</span><span class="op">:</span><span class="dv">100</span>]</a>
+<a class="sourceLine" id="cb2-7" title="7">out1 &lt;-<span class="st"> </span><span class="kw"><a href="reference/RunningCor.html">RunningCor</a></span>(x, pattern)</a>
+<a class="sourceLine" id="cb2-8" title="8">out2 &lt;-<span class="st"> </span><span class="kw"><a href="reference/RunningCor.html">RunningCor</a></span>(x, pattern, <span class="dt">circular =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb2-9" title="9"></a>
+<a class="sourceLine" id="cb2-10" title="10"><span class="co">## Example: running mean</span></a>
+<a class="sourceLine" id="cb2-11" title="11">x &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/cumsum">cumsum</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/Normal">rnorm</a></span>(<span class="dv">1000</span>))</a>
+<a class="sourceLine" id="cb2-12" title="12">out1 &lt;-<span class="st"> </span><span class="kw"><a href="reference/RunningMean.html">RunningMean</a></span>(x, <span class="dt">W =</span> <span class="dv">100</span>)</a>
+<a class="sourceLine" id="cb2-13" title="13">out2 &lt;-<span class="st"> </span><span class="kw"><a href="reference/RunningMean.html">RunningMean</a></span>(x, <span class="dt">W =</span> <span class="dv">100</span>, <span class="dt">circular =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
 </div>
 <div id="running-statistics" class="section level3">
 <h3 class="hasAnchor">
@@ -148,40 +148,36 @@ out2 &lt;-<span class="st"> </span><span class="kw"><a href="reference/RunningMe
 <li>
 <code>"RunningL2Norm"</code>.</li>
 </ol>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Example: demo for running correlation method  
-<span class="kw"><a href="reference/runstats.demo.html">runstats.demo</a></span>(<span class="st">"RunningCor"</span>)</code></pre></div>
-<div class="figure">
-<img src="https://i.imgur.com/JQObAu7.gif">
-</div>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Example: demo for running mean method 
-<span class="kw"><a href="reference/runstats.demo.html">runstats.demo</a></span>(<span class="st">"RunningMean"</span>)</code></pre></div>
-<div class="figure">
-<img src="https://i.imgur.com/FWah3aG.gif">
-</div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1"><span class="co">## Example: demo for running correlation method  </span></a>
+<a class="sourceLine" id="cb3-2" title="2"><span class="kw"><a href="reference/runstats.demo.html">runstats.demo</a></span>(<span class="st">"RunningCor"</span>)</a></code></pre></div>
+<p><img src="https://i.imgur.com/JQObAu7.gif"></p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1"><span class="co">## Example: demo for running mean method </span></a>
+<a class="sourceLine" id="cb4-2" title="2"><span class="kw"><a href="reference/runstats.demo.html">runstats.demo</a></span>(<span class="st">"RunningMean"</span>)</a></code></pre></div>
+<p><img src="https://i.imgur.com/FWah3aG.gif"></p>
 </div>
 <div id="performance" class="section level3">
 <h3 class="hasAnchor">
 <a href="#performance" class="anchor"></a>Performance</h3>
 <p>We use <code>rbenchmark</code> to measure elapsed time of <code>RunningCov</code> execution, for different lengths of time-series <code>x</code> and fixed length of the shorter pattern <code>y</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(rbenchmark)
-
-<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/Random">set.seed</a></span> (<span class="dv">20181010</span>)
-x.N.seq &lt;-<span class="st"> </span><span class="dv">10</span><span class="op">^</span>(<span class="dv">3</span><span class="op">:</span><span class="dv">7</span>)
-x.list  &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/lapply">lapply</a></span>(x.N.seq, <span class="cf">function</span>(N) <span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/Uniform">runif</a></span>(N))
-y &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/Uniform">runif</a></span>(<span class="dv">100</span>)
-
-## Benchmark execution time of RunningCov 
-out.df &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/data.frame">data.frame</a></span>()
-<span class="cf">for</span> (x.tmp <span class="cf">in</span> x.list){
-  out.df.tmp &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/rbenchmark/topics/benchmark">benchmark</a></span>(<span class="st">"runstats"</span> =<span class="st"> </span>runstats<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/runstats/topics/RunningCov">RunningCov</a></span>(x.tmp, y),
-                          <span class="dt">replications =</span> <span class="dv">10</span>,
-                          <span class="dt">columns =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"test"</span>, <span class="st">"replications"</span>, <span class="st">"elapsed"</span>,
-                                      <span class="st">"relative"</span>, <span class="st">"user.self"</span>, <span class="st">"sys.self"</span>))
-  out.df.tmp<span class="op">$</span>x_length &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/length">length</a></span>(x.tmp)
-  out.df.tmp<span class="op">$</span>pattern_length &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/length">length</a></span>(y)
-  out.df &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/cbind">rbind</a></span>(out.df, out.df.tmp)
-}</code></pre></div>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">knitr<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/knitr/topics/kable">kable</a></span>(out.df)</code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(rbenchmark)</a>
+<a class="sourceLine" id="cb5-2" title="2"></a>
+<a class="sourceLine" id="cb5-3" title="3"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/Random">set.seed</a></span> (<span class="dv">20181010</span>)</a>
+<a class="sourceLine" id="cb5-4" title="4">x.N.seq &lt;-<span class="st"> </span><span class="dv">10</span><span class="op">^</span>(<span class="dv">3</span><span class="op">:</span><span class="dv">7</span>)</a>
+<a class="sourceLine" id="cb5-5" title="5">x.list  &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/lapply">lapply</a></span>(x.N.seq, <span class="cf">function</span>(N) <span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/Uniform">runif</a></span>(N))</a>
+<a class="sourceLine" id="cb5-6" title="6">y &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/Uniform">runif</a></span>(<span class="dv">100</span>)</a>
+<a class="sourceLine" id="cb5-7" title="7"></a>
+<a class="sourceLine" id="cb5-8" title="8"><span class="co">## Benchmark execution time of RunningCov </span></a>
+<a class="sourceLine" id="cb5-9" title="9">out.df &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/data.frame">data.frame</a></span>()</a>
+<a class="sourceLine" id="cb5-10" title="10"><span class="cf">for</span> (x.tmp <span class="cf">in</span> x.list){</a>
+<a class="sourceLine" id="cb5-11" title="11">  out.df.tmp &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/rbenchmark/topics/benchmark">benchmark</a></span>(<span class="st">"runstats"</span> =<span class="st"> </span>runstats<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/runstats/topics/RunningCov">RunningCov</a></span>(x.tmp, y),</a>
+<a class="sourceLine" id="cb5-12" title="12">                          <span class="dt">replications =</span> <span class="dv">10</span>,</a>
+<a class="sourceLine" id="cb5-13" title="13">                          <span class="dt">columns =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"test"</span>, <span class="st">"replications"</span>, <span class="st">"elapsed"</span>,</a>
+<a class="sourceLine" id="cb5-14" title="14">                                      <span class="st">"relative"</span>, <span class="st">"user.self"</span>, <span class="st">"sys.self"</span>))</a>
+<a class="sourceLine" id="cb5-15" title="15">  out.df.tmp<span class="op">$</span>x_length &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/length">length</a></span>(x.tmp)</a>
+<a class="sourceLine" id="cb5-16" title="16">  out.df.tmp<span class="op">$</span>pattern_length &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/length">length</a></span>(y)</a>
+<a class="sourceLine" id="cb5-17" title="17">  out.df &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/cbind">rbind</a></span>(out.df, out.df.tmp)</a>
+<a class="sourceLine" id="cb5-18" title="18">}</a></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1">knitr<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/knitr/topics/kable">kable</a></span>(out.df)</a></code></pre></div>
 <table class="table table">
 <thead><tr class="header">
 <th align="left">test</th>
@@ -250,57 +246,57 @@ out.df &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocu
 <h5 class="hasAnchor">
 <a href="#compare-with-a-conventional-method" class="anchor"></a>Compare with a conventional method</h5>
 <p>To compare <code>RunStats</code> performance with “conventional” loop-based way of computing running covariance in <code>R</code>, we use <code>rbenchmark</code> package to measure elapsed time of <code>RunStats::RunningCov</code> and running covariance implemented with <code>sapply</code> loop, for different lengths of time-series <code>x</code> and fixed length of the shorter time-series <code>y</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Conventional approach 
-RunningCov.sapply &lt;-<span class="st"> </span><span class="cf">function</span>(x, y){
-  l_x &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/length">length</a></span>(x)
-  l_y &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/length">length</a></span>(y)
-  <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/lapply">sapply</a></span>(<span class="dv">1</span><span class="op">:</span>(l_x <span class="op">-</span><span class="st"> </span>l_y <span class="op">+</span><span class="st"> </span><span class="dv">1</span>), <span class="cf">function</span>(i){
-    <span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/cor">cov</a></span>(x[i<span class="op">:</span>(i<span class="op">+</span>l_y<span class="op">-</span><span class="dv">1</span>)], y)
-  })
-}
-
-<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/Random">set.seed</a></span> (<span class="dv">20181010</span>)
-
-out.df2 &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/data.frame">data.frame</a></span>()
-<span class="cf">for</span> (x.tmp <span class="cf">in</span> x.list[<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>)]){
-  out.df.tmp &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/rbenchmark/topics/benchmark">benchmark</a></span>(<span class="st">"conventional"</span> =<span class="st"> </span><span class="kw">RunningCov.sapply</span>(x.tmp, y),
-                          <span class="st">"runstats"</span> =<span class="st"> </span>runstats<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/runstats/topics/RunningCov">RunningCov</a></span>(x.tmp, y),
-                          <span class="dt">replications =</span> <span class="dv">10</span>,
-                          <span class="dt">columns =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"test"</span>, <span class="st">"replications"</span>, <span class="st">"elapsed"</span>,
-                                      <span class="st">"relative"</span>, <span class="st">"user.self"</span>, <span class="st">"sys.self"</span>))
-  out.df.tmp<span class="op">$</span>x_length &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/length">length</a></span>(x.tmp)
-  out.df2 &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/cbind">rbind</a></span>(out.df2, out.df.tmp)
-}</code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1"><span class="co">## Conventional approach </span></a>
+<a class="sourceLine" id="cb7-2" title="2">RunningCov.sapply &lt;-<span class="st"> </span><span class="cf">function</span>(x, y){</a>
+<a class="sourceLine" id="cb7-3" title="3">  l_x &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/length">length</a></span>(x)</a>
+<a class="sourceLine" id="cb7-4" title="4">  l_y &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/length">length</a></span>(y)</a>
+<a class="sourceLine" id="cb7-5" title="5">  <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/lapply">sapply</a></span>(<span class="dv">1</span><span class="op">:</span>(l_x <span class="op">-</span><span class="st"> </span>l_y <span class="op">+</span><span class="st"> </span><span class="dv">1</span>), <span class="cf">function</span>(i){</a>
+<a class="sourceLine" id="cb7-6" title="6">    <span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/cor">cov</a></span>(x[i<span class="op">:</span>(i<span class="op">+</span>l_y<span class="dv">-1</span>)], y)</a>
+<a class="sourceLine" id="cb7-7" title="7">  })</a>
+<a class="sourceLine" id="cb7-8" title="8">}</a>
+<a class="sourceLine" id="cb7-9" title="9"></a>
+<a class="sourceLine" id="cb7-10" title="10"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/Random">set.seed</a></span> (<span class="dv">20181010</span>)</a>
+<a class="sourceLine" id="cb7-11" title="11"></a>
+<a class="sourceLine" id="cb7-12" title="12">out.df2 &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/data.frame">data.frame</a></span>()</a>
+<a class="sourceLine" id="cb7-13" title="13"><span class="cf">for</span> (x.tmp <span class="cf">in</span> x.list[<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>)]){</a>
+<a class="sourceLine" id="cb7-14" title="14">  out.df.tmp &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/rbenchmark/topics/benchmark">benchmark</a></span>(<span class="st">"conventional"</span> =<span class="st"> </span><span class="kw">RunningCov.sapply</span>(x.tmp, y),</a>
+<a class="sourceLine" id="cb7-15" title="15">                          <span class="st">"runstats"</span> =<span class="st"> </span>runstats<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/runstats/topics/RunningCov">RunningCov</a></span>(x.tmp, y),</a>
+<a class="sourceLine" id="cb7-16" title="16">                          <span class="dt">replications =</span> <span class="dv">10</span>,</a>
+<a class="sourceLine" id="cb7-17" title="17">                          <span class="dt">columns =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"test"</span>, <span class="st">"replications"</span>, <span class="st">"elapsed"</span>,</a>
+<a class="sourceLine" id="cb7-18" title="18">                                      <span class="st">"relative"</span>, <span class="st">"user.self"</span>, <span class="st">"sys.self"</span>))</a>
+<a class="sourceLine" id="cb7-19" title="19">  out.df.tmp<span class="op">$</span>x_length &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/length">length</a></span>(x.tmp)</a>
+<a class="sourceLine" id="cb7-20" title="20">  out.df2 &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/cbind">rbind</a></span>(out.df2, out.df.tmp)</a>
+<a class="sourceLine" id="cb7-21" title="21">}</a></code></pre></div>
 <p>Benchmark results</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(ggplot2)
-
-plt1 &lt;-<span class="st"> </span>
-<span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(out.df2, <span class="kw"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="dt">x =</span> x_length, <span class="dt">y =</span> elapsed, <span class="dt">color =</span> test)) <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span>() <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span>(<span class="dt">size =</span> <span class="dv">3</span>) <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_x_log10</a></span>() <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span>(<span class="dt">base_size =</span> <span class="dv">14</span>) <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span>(<span class="dt">x =</span> <span class="st">"Vector length of x"</span>,
-       <span class="dt">y =</span> <span class="st">"Elapsed [s]"</span>, <span class="dt">color =</span> <span class="st">"Method"</span>, 
-       <span class="dt">title =</span> <span class="st">"Running covariance rbenchmark"</span>) <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span>(<span class="dt">legend.position =</span> <span class="st">"bottom"</span>)
-plt2 &lt;-<span class="st"> </span>
-<span class="st">  </span>plt1 <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_log10</a></span>() <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span>(<span class="dt">y =</span> <span class="st">"Log of elapsed [s]"</span>)
-
-cowplot<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/cowplot/topics/plot_grid">plot_grid</a></span>(plt1, plt2, <span class="dt">nrow =</span> <span class="dv">1</span>, <span class="dt">labels =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">'A'</span>, <span class="st">'B'</span>))</code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(ggplot2)</a>
+<a class="sourceLine" id="cb8-2" title="2"></a>
+<a class="sourceLine" id="cb8-3" title="3">plt1 &lt;-<span class="st"> </span></a>
+<a class="sourceLine" id="cb8-4" title="4"><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(out.df2, <span class="kw"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="dt">x =</span> x_length, <span class="dt">y =</span> elapsed, <span class="dt">color =</span> test)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb8-5" title="5"><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span>() <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span>(<span class="dt">size =</span> <span class="dv">3</span>) <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_x_log10</a></span>() <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb8-6" title="6"><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span>(<span class="dt">base_size =</span> <span class="dv">14</span>) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb8-7" title="7"><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span>(<span class="dt">x =</span> <span class="st">"Vector length of x"</span>,</a>
+<a class="sourceLine" id="cb8-8" title="8">       <span class="dt">y =</span> <span class="st">"Elapsed [s]"</span>, <span class="dt">color =</span> <span class="st">"Method"</span>, </a>
+<a class="sourceLine" id="cb8-9" title="9">       <span class="dt">title =</span> <span class="st">"Running covariance rbenchmark"</span>) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb8-10" title="10"><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span>(<span class="dt">legend.position =</span> <span class="st">"bottom"</span>)</a>
+<a class="sourceLine" id="cb8-11" title="11">plt2 &lt;-<span class="st"> </span></a>
+<a class="sourceLine" id="cb8-12" title="12"><span class="st">  </span>plt1 <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb8-13" title="13"><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_log10</a></span>() <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb8-14" title="14"><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span>(<span class="dt">y =</span> <span class="st">"Log of elapsed [s]"</span>)</a>
+<a class="sourceLine" id="cb8-15" title="15"></a>
+<a class="sourceLine" id="cb8-16" title="16">cowplot<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/cowplot/topics/plot_grid">plot_grid</a></span>(plt1, plt2, <span class="dt">nrow =</span> <span class="dv">1</span>, <span class="dt">labels =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">'A'</span>, <span class="st">'B'</span>))</a></code></pre></div>
 <p><img src="reference/figures/README-unnamed-chunk-13-1.png" width="100%"></p>
 <p>Platform information</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sessioninfo<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/sessioninfo/topics/platform_info">platform_info</a></span>()
-<span class="co">#&gt;  setting  value                       </span>
-<span class="co">#&gt;  version  R version 3.5.2 (2018-12-20)</span>
-<span class="co">#&gt;  os       macOS Mojave 10.14.2        </span>
-<span class="co">#&gt;  system   x86_64, darwin15.6.0        </span>
-<span class="co">#&gt;  ui       X11                         </span>
-<span class="co">#&gt;  language (EN)                        </span>
-<span class="co">#&gt;  collate  en_US.UTF-8                 </span>
-<span class="co">#&gt;  ctype    en_US.UTF-8                 </span>
-<span class="co">#&gt;  tz       America/New_York            </span>
-<span class="co">#&gt;  date     2019-03-06</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1">sessioninfo<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/sessioninfo/topics/platform_info">platform_info</a></span>()</a>
+<a class="sourceLine" id="cb9-2" title="2"><span class="co">#&gt;  setting  value                       </span></a>
+<a class="sourceLine" id="cb9-3" title="3"><span class="co">#&gt;  version  R version 3.5.2 (2018-12-20)</span></a>
+<a class="sourceLine" id="cb9-4" title="4"><span class="co">#&gt;  os       macOS Mojave 10.14.2        </span></a>
+<a class="sourceLine" id="cb9-5" title="5"><span class="co">#&gt;  system   x86_64, darwin15.6.0        </span></a>
+<a class="sourceLine" id="cb9-6" title="6"><span class="co">#&gt;  ui       X11                         </span></a>
+<a class="sourceLine" id="cb9-7" title="7"><span class="co">#&gt;  language (EN)                        </span></a>
+<a class="sourceLine" id="cb9-8" title="8"><span class="co">#&gt;  collate  en_US.UTF-8                 </span></a>
+<a class="sourceLine" id="cb9-9" title="9"><span class="co">#&gt;  ctype    en_US.UTF-8                 </span></a>
+<a class="sourceLine" id="cb9-10" title="10"><span class="co">#&gt;  tz       America/New_York            </span></a>
+<a class="sourceLine" id="cb9-11" title="11"><span class="co">#&gt;  date     2019-03-15</span></a></code></pre></div>
 </div>
 </div>
 </div>
@@ -310,6 +306,8 @@ cowplot<span class="op">::</span><span class="kw"><a href="https://www.rdocument
     <div class="links">
 <h2>Links</h2>
 <ul class="list-unstyled">
+<li>Download from CRAN at <br><a href="https://cloud.r-project.org/package=runstats">https://​cloud.r-project.org/​package=runstats</a>
+</li>
 <li>Browse source code at <br><a href="https://github.com/martakarass/runstats">https://​github.com/​martakarass/​runstats</a>
 </li>
 <li>Report a bug at <br><a href="https://github.com/martakarass/runstats/issues">https://​github.com/​martakarass/​runstats/​issues</a>
@@ -337,6 +335,8 @@ cowplot<span class="op">::</span><span class="kw"><a href="https://www.rdocument
 <li><a href="https://travis-ci.com/martakarass/runstats"><img src="https://travis-ci.com/martakarass/runstats.svg?branch=master" alt="Travis build status"></a></li>
 <li><a href="https://ci.appveyor.com/project/martakarass/runstats"><img src="https://ci.appveyor.com/api/projects/status/github/martakarass/runstats?branch=master&amp;svg=true" alt="AppVeyor build status"></a></li>
 <li><a href="https://codecov.io/github/martakarass/runstats?branch=master"><img src="https://codecov.io/gh/martakarass/runstats/branch/master/graph/badge.svg" alt="Coverage status"></a></li>
+<li><a href="https://cran.r-project.org/package=runstats"><img src="https://www.r-pkg.org/badges/version/runstats" alt="CRAN status"></a></li>
+<li><a href="https://cran.r-project.org/package=runstats"><img src="https://cranlogs.r-pkg.org/badges/grand-total/runstats"></a></li>
 </ul>
 </div>
 </div>
