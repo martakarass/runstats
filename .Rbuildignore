@@ -7,6 +7,7 @@
 ^appveyor\.yml$
 ^\.travis\.yml$
 ^README\.Rmd$
+^README2\.Rmd$
 ^.*\.Rproj$
 ^\.Rproj\.user$s
 ^vignettes/i_get_built\.Rmd$
