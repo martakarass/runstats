@@ -304,7 +304,8 @@ RunningCov = function(x, y, circular = FALSE){
   win <- rep(1, W)
 
   ## mean of x (running mean), mean of y
-  meanx <- convJU(x, win)/W
+  # meanx <- convJU(x, win)/W
+  meanx <- RunningMean(x, W, circular = TRUE)
   meany <- mean(y)
 
   ## unbiased estimator of sample covariance
