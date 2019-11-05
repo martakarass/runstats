@@ -46,6 +46,21 @@ convJU <- function(x, y){
 
 
 
+#' Title
+#'
+#' @param x
+#' @param W
+#'
+#' @return
+#'
+#' @noRd
+#'
+runningSum <- function(x, W){
+  x_ext <- c(x, x[1:(W-1)])
+  x_runningSum <- diff(c(0, cumsum(x_ext)), lag = W)
+  return(x_runningSum)
+}
+
 
 
 #' @title
@@ -93,17 +108,26 @@ RunningMean <- function(x, W, circular = FALSE){
 
   if (W > length(x)) stop("W must be smaller or equal to the length of x")
 
-  ## constant value=1 segment
-  win <- rep(1, W)
+  # ## constant value=1 segment
+  # win <- rep(1, W)
+  #
+  # ## mean of x (running mean)
+  # meanx <- convJU(x, win)/W
+  #
+  # ## trim outout tail if not circular
+  # if (!circular){
+  #   meanx[(length(x) - W + 2) : length(x)] <- NA
+  # }
 
-  ## mean of x (running mean)
-  meanx <- convJU(x, win)/W
+  meanx <- runningSum(x, W)/W
 
-  ## trim outout tail if not circular
-  if (!circular) meanx[(length(x) - W + 2) : length(x)] <- NA
+  if (!circular){
+    meanx[(length(x) - W + 2) : length(x)] <- NA
+  }
 
   return(meanx)
 }
+
 
 
 
@@ -152,15 +176,17 @@ RunningVar <- function(x, W, circular = FALSE){
 
   if (W > length(x)) stop("W must be smaller or equal to the length of x")
 
-  ## constant value=1 segment
-  win <- rep(1, W)
+  # ## constant value=1 segment
+  # win <- rep(1, W)
+  #
+  # # unbiased estimator of variance given as
+  # # S^2 = \frac{\sum X^2 - \frac{(\sum X)^2}{N}}{N-1}
+  # sigmax2 <- (convJU(x^2, win) - ((convJU(x, win))^2)/W)/(W - 1)
+  #
+  # ## correct numerical errors, if any
+  # sigmax2[sigmax2 < 0] <- 0
 
-  # unbiased estimator of variance given as
-  # S^2 = \frac{\sum X^2 - \frac{(\sum X)^2}{N}}{N-1}
-  sigmax2 <- (convJU(x^2, win) - ((convJU(x, win))^2)/W)/(W - 1)
-
-  ## correct numerical errors, if any
-  sigmax2[sigmax2 < 0] <- 0
+  sigmax2 <- (runningSum(x^2, W) - ((runningSum(x, W))^2)/W)/(W - 1)
 
   if (!circular) sigmax2[(length(x) - W + 2) : length(x)] <- NA
 

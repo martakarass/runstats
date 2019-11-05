@@ -91,6 +91,8 @@ runstats.demo("RunningMean")
 
 ### Performance
 
+<span style="color:red">NOTE: this performance results part has been outdated since Nov 5, 2019 code improvements. Yet to be updated before pushing to CRAN.</span>
+
 We use `rbenchmark` to measure elapsed time of `RunningCov` execution, for different lengths of time-series `x` and fixed length of the shorter pattern `y`.
 
 ```{r, echo=FALSE, include=FALSE}
@@ -139,6 +141,8 @@ knitr::kable(out.df)
 ```
 
 ##### Compare with a conventional method 
+
+<span style="color:red">NOTE: this performance results part has been outdated since Nov 5, 2019 code improvements. Yet to be updated before pushing to CRAN.</span>
 
 To compare `RunStats` performance with "conventional" loop-based way of computing running covariance in `R`, we use `rbenchmark` package to measure elapsed time of `RunStats::RunningCov` and running covariance implemented with `sapply` loop, for different lengths of time-series `x` and fixed length of the shorter time-series `y`.
 

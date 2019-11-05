@@ -8,7 +8,8 @@ Authors@R: c(
   person("Jacek", "Urbanek", role = c("aut"), 
       comment = c(ORCID = "0000-0002-1890-8899")),
   person("John", "Muschelli", role = c("ctb"), 
-      comment = c(ORCID = "0000-0001-6469-1750"))
+      comment = c(ORCID = "0000-0001-6469-1750")),
+  person("Lacey", "Etzkorn", role = c("ctb"))
   )
 Description: Provides methods for fast computation of running sample 
     statistics for time series. These include: (1) mean, (2) 
