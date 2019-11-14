@@ -17,8 +17,7 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
   fig.path = "man/figures/README-",
-  out.width = "100%",
-  cache = TRUE
+  out.width = "100%"
 )
 ```
 
@@ -91,8 +90,6 @@ runstats.demo("RunningMean")
 
 ### Performance
 
-<span style="color:red">NOTE: this performance results part has been outdated since Nov 5, 2019 code improvements. Yet to be updated before pushing to CRAN.</span>
-
 We use `rbenchmark` to measure elapsed time of `RunningCov` execution, for different lengths of time-series `x` and fixed length of the shorter pattern `y`.
 
 ```{r, echo=FALSE, include=FALSE}
@@ -124,25 +121,23 @@ for (x.tmp in x.list){
 
 
 ```{r, echo = FALSE, eval = FALSE}
-
-out.df.path <- "inst/benchmark_results/2018-12-17-performance_rbenchmark_suite1.csv"
+# out.df.path <- "inst/benchmark_results/2018-12-17-performance_rbenchmark_suite1.csv"
+out.df.path <- "inst/benchmark_results/2019-11-13-performance_rbenchmark_suite1.csv"
 write.csv(out.df, out.df.path, row.names = FALSE, quote = FALSE)
 ```
 
 ```{r, echo = FALSE, eval = TRUE}
-out.df.path <- "inst/benchmark_results/2018-12-17-performance_rbenchmark_suite1.csv"
+# out.df.path <- "inst/benchmark_results/2018-12-17-performance_rbenchmark_suite1.csv"
+out.df.path <- "inst/benchmark_results/2019-11-13-performance_rbenchmark_suite1.csv"
 out.df <- read.csv(out.df.path)
 options("scipen" = 10, "digits" = 4)
 ```
-
 
 ```{r}
 knitr::kable(out.df)
 ```
 
 ##### Compare with a conventional method 
-
-<span style="color:red">NOTE: this performance results part has been outdated since Nov 5, 2019 code improvements. Yet to be updated before pushing to CRAN.</span>
 
 To compare `RunStats` performance with "conventional" loop-based way of computing running covariance in `R`, we use `rbenchmark` package to measure elapsed time of `RunStats::RunningCov` and running covariance implemented with `sapply` loop, for different lengths of time-series `x` and fixed length of the shorter time-series `y`.
 
@@ -172,12 +167,14 @@ for (x.tmp in x.list[c(1,2,3,4)]){
 ```
 
 ```{r, echo = FALSE, eval = FALSE}
-out.df.path <- "inst/benchmark_results/2018-12-17-performance_rbenchmark_suite2.csv"
+out.df.path <- "inst/benchmark_results/2019-11-13-performance_rbenchmark_suite2.csv"
+# out.df.path <- "inst/benchmark_results/2018-12-17-performance_rbenchmark_suite2.csv"
 write.csv(out.df2, out.df.path, row.names = FALSE, quote = FALSE)
 ```
 
 ```{r, echo = FALSE, eval = TRUE}
-out.df.path <- "inst/benchmark_results/2018-12-17-performance_rbenchmark_suite2.csv"
+out.df.path <- "inst/benchmark_results/2019-11-13-performance_rbenchmark_suite2.csv"
+# out.df.path <- "inst/benchmark_results/2018-12-17-performance_rbenchmark_suite2.csv"
 out.df2 <- read.csv(out.df.path)
 ```
 

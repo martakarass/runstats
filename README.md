@@ -86,10 +86,6 @@ runstats.demo("RunningMean")
 
 ### Performance
 
-<span style="color:red">NOTE: this performance results part has been
-outdated since Nov 5, 2019 code improvements. Yet to be updated before
-pushing to CRAN.</span>
-
 We use `rbenchmark` to measure elapsed time of `RunningCov` execution,
 for different lengths of time-series `x` and fixed length of the shorter
 pattern `y`.
@@ -121,17 +117,13 @@ knitr::kable(out.df)
 
 | test     | replications | elapsed | relative | user.self | sys.self | x\_length | pattern\_length |
 | :------- | -----------: | ------: | -------: | --------: | -------: | --------: | --------------: |
-| runstats |           10 |   0.003 |        1 |     0.003 |    0.000 |      1000 |             100 |
-| runstats |           10 |   0.031 |        1 |     0.025 |    0.006 |     10000 |             100 |
-| runstats |           10 |   0.385 |        1 |     0.328 |    0.056 |    100000 |             100 |
-| runstats |           10 |   5.694 |        1 |     5.509 |    0.171 |   1000000 |             100 |
-| runstats |           10 | 126.393 |        1 |   121.007 |    4.954 |  10000000 |             100 |
+| runstats |           10 |   0.002 |        1 |     0.002 |    0.000 |      1000 |             100 |
+| runstats |           10 |   0.017 |        1 |     0.014 |    0.003 |     10000 |             100 |
+| runstats |           10 |   0.175 |        1 |     0.147 |    0.028 |    100000 |             100 |
+| runstats |           10 |   2.814 |        1 |     2.685 |    0.098 |   1000000 |             100 |
+| runstats |           10 |  50.210 |        1 |    48.222 |    1.870 |  10000000 |             100 |
 
 ##### Compare with a conventional method
-
-<span style="color:red">NOTE: this performance results part has been
-outdated since Nov 5, 2019 code improvements. Yet to be updated before
-pushing to CRAN.</span>
 
 To compare `RunStats` performance with “conventional” loop-based way of
 computing running covariance in `R`, we use `rbenchmark` package to
@@ -199,5 +191,5 @@ sessioninfo::platform_info()
 #>  collate  en_US.UTF-8                 
 #>  ctype    en_US.UTF-8                 
 #>  tz       America/New_York            
-#>  date     2019-11-05
+#>  date     2019-11-14
 ```
