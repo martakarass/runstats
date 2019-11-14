@@ -32,7 +32,7 @@ test_that("Checking RunningL2Norm via FFT returns what is equivalent with conven
   output      <- RunningL2Norm(x, y, circular = TRUE)
   output.conv <- RunningL2Norm.CONV(x, y, circular = TRUE)
   max.diff    <- max(abs(output - output.conv))
-  expect_equal(max.diff, 0, tolerance = 1e-8)
+  expect_equal(max.diff, 0, tolerance = 1e-7)
 })
 
 
@@ -45,7 +45,7 @@ test_that("Checking RunningL2Norm via FFT returns what is equivalent with conven
   output.conv <- RunningL2Norm.CONV(x, y, circular = FALSE)
 
   max.diff    <- max(abs(output - output.conv), na.rm = TRUE)
-  expect_equal(max.diff, 0, tolerance = 1e-8)
+  expect_equal(max.diff, 0, tolerance = 1e-7)
 
   expect_true(all(is.na(output) == is.na(output.conv)))
 })

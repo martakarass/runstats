@@ -1,6 +1,4 @@
 
-
-
 #' @title
 #' Fast Sequences Convolution
 #'
@@ -27,19 +25,19 @@
 #' @param x numeric sequence
 #' @param y numeric sequence, of equal or shorter length than  \code{x} sequence
 #'
+#' @importFrom fftwtools fftw
+#'
 #' @return numeric sequence
 #'
 #' @noRd
 #'
 convJU <- function(x, y){
 
-  N1 <- length(x)
-  N2 <- length(y)
+  nx <- length(x)
+  ny <- length(y)
 
-  y0 <- append(y, rep(0, N1 - N2))
-
-  out <- convolve(x, y0)
-  out <- out[1:N1]
+  y_app <- c(y, rep(0, nx - ny))
+  out   <- Re(fftw(fftw(x) * Conj(fftw(y_app)), inverse = 1))/nx
 
   return(out)
 }

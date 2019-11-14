@@ -32,7 +32,8 @@ Package `runstats` provides methods for fast computation of running sample stati
 ### Installation
 
 ```{r, eval = FALSE}
-devtools::install_github("martakarass/runstats")
+# devtools::install_github("martakarass/runstats")
+install.packages("runstats")
 ```
 
 
@@ -115,12 +116,12 @@ for (x.tmp in x.list){
 
 ```{r, echo = FALSE, eval = FALSE}
 
-out.df.path <- "../inst/benchmark_results/2018-12-17-performance_rbenchmark_suite1.csv"
+out.df.path <- "../inst/benchmark_results/2019-11-14-performance_rbenchmark_suite1.csv"
 write.csv(out.df, out.df.path, row.names = FALSE, quote = FALSE)
 ```
 
 ```{r, echo = FALSE, eval = TRUE}
-out.df.path <- "../inst/benchmark_results/2018-12-17-performance_rbenchmark_suite1.csv"
+out.df.path <- "../inst/benchmark_results/2019-11-14-performance_rbenchmark_suite1.csv"
 out.df <- read.csv(out.df.path)
 options("scipen" = 10, "digits" = 4)
 ```
@@ -160,12 +161,12 @@ for (x.tmp in x.list[c(1,2,3,4)]){
 ```
 
 ```{r, echo = FALSE, eval = FALSE}
-out.df.path <-"../inst/benchmark_results/2018-12-17-performance_rbenchmark_suite2.csv"
+out.df.path <-"../inst/benchmark_results/2019-11-14-performance_rbenchmark_suite2.csv"
 write.csv(out.df2, out.df.path, row.names = FALSE, quote = FALSE)
 ```
 
 ```{r, echo = FALSE, eval = TRUE}
-out.df.path <- "../inst/benchmark_results/2018-12-17-performance_rbenchmark_suite2.csv"
+out.df.path <- "../inst/benchmark_results/2019-11-14-performance_rbenchmark_suite2.csv"
 out.df2 <- read.csv(out.df.path)
 ```
 
