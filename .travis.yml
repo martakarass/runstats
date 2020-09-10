@@ -15,6 +15,7 @@ r:
   - oldrel
 
 before_install:
+  - sudo apt-get -y install libfftw3-dev
   - sudo apt-get -y install fftw3
   - sudo apt-get -y install fftw-dev
 
