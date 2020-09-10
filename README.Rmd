@@ -204,7 +204,7 @@ plt2 <-
 cowplot::plot_grid(plt1, plt2, nrow = 1, labels = c('A', 'B'))
 ```
 
-Platform information
+Platform info
 
 ```{r}
 sessioninfo::platform_info()
