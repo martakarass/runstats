@@ -8,7 +8,7 @@ status](https://codecov.io/gh/martakarass/runstats/branch/master/graph/badge.svg
 [![CRAN
 status](https://www.r-pkg.org/badges/version/runstats)](https://cran.r-project.org/package=runstats)
 [![](https://cranlogs.r-pkg.org/badges/grand-total/runstats)](https://cran.r-project.org/package=runstats)
-
+[![](https://cranlogs.r-pkg.org/badges/last-month/runstats)](https://cran.r-project.org/package=runstats)
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
 # runstats
@@ -184,13 +184,13 @@ Platform info
 ``` r
 sessioninfo::platform_info()
 #>  setting  value                       
-#>  version  R version 3.6.3 (2020-02-29)
-#>  os       macOS Catalina 10.15.5      
-#>  system   x86_64, darwin15.6.0        
+#>  version  R version 4.0.3 (2020-10-10)
+#>  os       macOS Catalina 10.15.7      
+#>  system   x86_64, darwin17.0          
 #>  ui       X11                         
 #>  language (EN)                        
 #>  collate  en_US.UTF-8                 
 #>  ctype    en_US.UTF-8                 
 #>  tz       America/New_York            
-#>  date     2020-09-09
+#>  date     2021-01-09
 ```
