@@ -1,14 +1,11 @@
 
-[![Travis build
-status](https://travis-ci.com/martakarass/runstats.svg?branch=master)](https://travis-ci.com/martakarass/runstats)
-[![AppVeyor build
-status](https://ci.appveyor.com/api/projects/status/github/martakarass/runstats?branch=master&svg=true)](https://ci.appveyor.com/project/martakarass/runstats)
 [![Coverage
 status](https://codecov.io/gh/martakarass/runstats/branch/master/graph/badge.svg)](https://codecov.io/github/martakarass/runstats?branch=master)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/runstats)](https://cran.r-project.org/package=runstats)
 [![](https://cranlogs.r-pkg.org/badges/grand-total/runstats)](https://cran.r-project.org/package=runstats)
 [![](https://cranlogs.r-pkg.org/badges/last-month/runstats)](https://cran.r-project.org/package=runstats)
+[![R-CMD-check](https://github.com/martakarass/runstats/workflows/R-CMD-check/badge.svg)](https://github.com/martakarass/runstats/actions)
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
 # runstats
@@ -69,8 +66,6 @@ being one of the methods’ names:
 5.  `"RunningCor"`,
 6.  `"RunningL2Norm"`.
 
-<!-- end list -->
-
 ``` r
 ## Example: demo for running correlation method  
 runstats.demo("RunningCor")
@@ -117,7 +112,7 @@ knitr::kable(out.df)
 ```
 
 | test     | replications | elapsed | relative | user.self | sys.self | x\_length | pattern\_length |
-| :------- | -----------: | ------: | -------: | --------: | -------: | --------: | --------------: |
+|:---------|-------------:|--------:|---------:|----------:|---------:|----------:|----------------:|
 | runstats |           10 |   0.005 |        1 |     0.004 |    0.001 |      1000 |             100 |
 | runstats |           10 |   0.023 |        1 |     0.018 |    0.004 |     10000 |             100 |
 | runstats |           10 |   0.194 |        1 |     0.158 |    0.037 |    100000 |             100 |
@@ -183,14 +178,15 @@ Platform info
 
 ``` r
 sessioninfo::platform_info()
-#>  setting  value                       
-#>  version  R version 4.0.3 (2020-10-10)
-#>  os       macOS Catalina 10.15.7      
-#>  system   x86_64, darwin17.0          
-#>  ui       X11                         
-#>  language (EN)                        
-#>  collate  en_US.UTF-8                 
-#>  ctype    en_US.UTF-8                 
-#>  tz       America/New_York            
-#>  date     2021-01-09
+#>  setting  value
+#>  version  R version 4.1.2 (2021-11-01)
+#>  os       macOS Catalina 10.15.7
+#>  system   x86_64, darwin17.0
+#>  ui       X11
+#>  language (EN)
+#>  collate  en_US.UTF-8
+#>  ctype    en_US.UTF-8
+#>  tz       America/New_York
+#>  date     2022-03-31
+#>  pandoc   2.11.4 @ /Applications/RStudio.app/Contents/MacOS/pandoc/ (via rmarkdown)
 ```
